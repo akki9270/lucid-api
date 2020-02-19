@@ -25,6 +25,9 @@ module.exports = function (app) {
 
     // frontend routes =========================================================
     // route to handle all angular requests
+    app.get('/api', function(req, res) {
+        res.send('Success');
+    });
     app.get('*', function (req, res) {
         res.sendfile( config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file
     });
