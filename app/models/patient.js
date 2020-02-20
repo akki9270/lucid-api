@@ -9,11 +9,11 @@ module.exports = function (Sequelize, Types) {
         days_to_soc: { type: Types.INTEGER },
         dob: { type: Types.DATE },
         gender: { type: Types.STRING },
-        phone_number: { type: Types.INTEGER },
+        phone_number: { type: Types.STRING },
         address: { type: Types.STRING },
         city: { type: Types.STRING },
         state: { type: Types.STRING },
-        zipcode: { type: Types.INTEGER },
+        zipcode: { type: Types.STRING },
         insurance_name: { type: Types.STRING },
         subscriber_id: { type: Types.STRING }
     }, {
