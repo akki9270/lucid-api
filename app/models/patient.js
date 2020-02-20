@@ -21,12 +21,18 @@ module.exports = function (Sequelize, Types) {
         modelName: 'Patient',
         // freezeTableName: true,
         timestamps: true,
-        paranoid: true,
-        classMethods: {
-            // eslint-disable-next-line
-            associate: function (models) { }
-        }
+        paranoid: true
     });
 
+    Patient.associate = function(models) {
+        models.Patient.hasOne(models.Key_Indicator, {
+            as: 'key_indicator',
+            foreignKey: 'patient_id'
+        });
+        models.Patient.hasMany(models.Service, {
+            as: 'service',
+            foreignKey: 'patient_id'
+        });
+    }
     return Patient;
 }

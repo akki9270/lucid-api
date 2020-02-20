@@ -21,7 +21,7 @@ module.exports = function (Sequelize, Types) {
 
     Key_Indicator.associate = function (models) {
         models.Key_Indicator.belongsTo(models.Patient, {
-            as: 'key_indicator',
+            as: 'patient',
             foreignKey: 'patient_id',
             targetKey: 'patient_id'
         });

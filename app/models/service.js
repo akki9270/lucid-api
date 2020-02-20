@@ -19,10 +19,26 @@ module.exports = function (Sequelize, Types) {
     });
     Service.associate = function (models) {
         models.Service.belongsTo(models.Patient, {
-            as: 'Service',
+            as: 'patient',
             foreignKey: 'patient_id',
             targetKey: 'patient_id'
         });
+        models.Service.belongsTo(models.Servicing_Provider, {
+            as: 'servicingProvider',
+            foreignKey: 'servicing_provider',
+            targetKey: 'servicing_provider_id'
+        });
+        models.Service.belongsTo(models.Physician, {
+            as: 'orderingPhysician',
+            foreignKey: 'ordering_physician',
+            targetKey: 'physician_id'
+        });
+        models.Service.belongsTo(models.Physician, {
+            as: 'primaryPhysician',
+            foreignKey: 'primary_physician',
+            targetKey: 'physician_id'
+        });
+
     };
     return Service;
 }

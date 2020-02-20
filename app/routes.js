@@ -6,6 +6,7 @@
 // grab the claim model we just created
 
 const config = require('./config');
+const Patients = require('./routes/Patient');
 //require('./passport'); // Include Own passport strategy.. 
 
 module.exports = function (app) {
@@ -28,6 +29,7 @@ module.exports = function (app) {
     app.get('/api', function(req, res) {
         res.send('Success');
     });
+    app.get('/api/getPatients',Patients.getPatients);
     app.get('*', function (req, res) {
         res.sendfile( config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file
     });

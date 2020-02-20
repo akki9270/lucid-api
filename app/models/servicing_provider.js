@@ -1,6 +1,6 @@
 module.exports = function (Sequelize, Types) {
     let Servicing_Provider = Sequelize.define('Servicing_Provider', {
-        servicing_provider_id: { type: Types.STRING },
+        servicing_provider_id: { type: Types.STRING, unique: true, primaryKey: true },
         name: { type: Types.STRING },
         address: { type: Types.STRING },
         city: { type: Types.STRING },
@@ -18,11 +18,10 @@ module.exports = function (Sequelize, Types) {
     });
 
     Servicing_Provider.associate = function (models) {
-        models.Servicing_Provider.belongsTo(models.Patient, {
-            as: 'Servicing_Provider',
-            foreignKry: 'patient_id',
-            targetKey: 'patient_id'
-        });
+        // models.Servicing_Provider.belongsTo(models.Service, {
+        //     foreignKey: 'servicing_provider_id',
+        //     targetKey: 'servicing_provider'
+        // });
     }
     return Servicing_Provider;
 }

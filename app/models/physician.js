@@ -1,6 +1,6 @@
 module.exports = function (Sequelize, Types) {
     let Physician = Sequelize.define('Physician', {
-        physian_id: { type: Types.STRING },
+        physician_id: { type: Types.STRING, unique: true, primaryKey: true  },
         name: { type: Types.STRING },
         address: { type: Types.STRING },
         city: { type: Types.STRING },
@@ -17,11 +17,14 @@ module.exports = function (Sequelize, Types) {
     });
 
     Physician.associate = function (models) {
-        models.Physician.belongsTo(models.Patient, {
-            as: 'Physician',
-            foreignKry: 'patient_id',
-            targetKey: 'patient_id'
-        })
+        // models.Physician.belongsTo(models.Service, {
+        //     foreignKey: 'physician_id',
+        //     targetKey: 'ordering_physician'
+        // });
+        // models.Physician.belongsTo(models.Service, {
+        //     foreignKey: 'physician_id',
+        //     targetKey: 'primary_physician'
+        // });
     }
     return Physician;
 }
