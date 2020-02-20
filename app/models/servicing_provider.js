@@ -5,9 +5,9 @@ module.exports = function (Sequelize, Types) {
         address: { type: Types.STRING },
         city: { type: Types.STRING },
         state: { type: Types.STRING },
-        zipcode: { type: Types.INTEGER },
-        phone_number: { type: Types.INTEGER },
-        fax: { type: Types.INTEGER },
+        zipcode: { type: Types.STRING },
+        phone_number: { type: Types.STRING },
+        fax: { type: Types.STRING },
         referral_type: { type: Types.STRING },
         referral_method: { type: Types.STRING }
     }, {

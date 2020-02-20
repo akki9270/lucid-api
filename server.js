@@ -70,6 +70,30 @@ require('./app/routes')(app); // configure our routes
 models.sequelize.sync().then(async function () {
     // start app ===============================================
     // startup our app at http://localhost:8080
+
+    let json_data = fs.readFileSync(__dirname + '/app/data/static_data.json');
+    let static_data = JSON.parse(json_data);
+    for (let i = 0; i < static_data.length; i++) {
+        try {
+            let item = static_data[i];
+            modelName = item.model;
+            // console.log('modelName ', modelName);
+            TIMELOGGER.info(`modelName ${modelName}`, {});
+            for (let j = 0; j < item.data.length; j++) {
+                let data = null;
+                let dataObj = item.data[j];
+                data = await models[modelName].findOne({ 
+                    where: {[item.primaryKey]: dataObj[item.primaryKey] },
+                });
+                if (!data) {
+                  await models[modelName].create({ ...dataObj });
+                }
+            }
+        } catch (err) {
+            // console.log('err ', err.message);
+            TIMELOGGER.info(`Static Data Insert Error: ${err.message}`, {});
+        }
+    }
     app.listen(port);
 }).catch(function(err) {
     // console.log(' SEQUEL ERR ', err);
