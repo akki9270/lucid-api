@@ -5,8 +5,21 @@ const TIMELOGGER = require('../winston').TIMELOGGER;
 
 async function getPatients(req, res, next) {
     let logData = { method: 'getPatients' };
+    let pathParams = req.params;
+    let patientId = '';
+    let whereClause = {};
+    if (pathParams && pathParams.patientId) {
+        patientId = pathParams.patientId;
+    }
+    if (patientId) {
+        whereClause = {
+            ...whereClause,
+            patient_id: { [Sequelize.Op.eq]: patientId }
+        }
+    }
     try {
         let patients = await models.Patient.findAll({
+            where: {...whereClause},
             include: [
                 {
                     model: models.Key_Indicator,

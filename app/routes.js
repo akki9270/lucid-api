@@ -30,6 +30,7 @@ module.exports = function (app) {
         res.send('Success');
     });
     app.get('/api/getPatients',Patients.getPatients);
+    app.get('/api/getPatients/:patientId',Patients.getPatients);
     app.get('*', function (req, res) {
         res.sendfile( config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file
     });
