@@ -1,8 +1,8 @@
 
 module.exports = function (Sequelize, Types) {
     let Patient = Sequelize.define('Patient', {
-        patient_id: { type: Types.STRING, unique: true, primaryKey: true },
-        intake_id: { type: Types.STRING },
+        patient_id: { type: Types.STRING, primaryKey: true },
+        intake_id: { type: Types.STRING, primaryKey: true },
         first_name: { type: Types.STRING },
         last_name: { type: Types.STRING },
         health_plan: { type: Types.STRING },
@@ -19,6 +19,12 @@ module.exports = function (Sequelize, Types) {
     }, {
         tableName: 'Patient',
         modelName: 'Patient',
+        // indexes: [
+        //     {
+        //         unique: true,
+        //         fields: ['patient_id', 'intake_id']
+        //     }
+        // ],
         // freezeTableName: true,
         timestamps: true,
         paranoid: true

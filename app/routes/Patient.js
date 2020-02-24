@@ -27,21 +27,7 @@ async function getPatients(req, res, next) {
                 },
                 {
                     model: models.Service,
-                    as: 'service',
-                    include: [
-                        {
-                            model: models.Servicing_Provider,
-                            as: 'servicingProvider'
-                        },
-                        {
-                            model: models.Physician,
-                            as: 'orderingPhysician'
-                        },
-                        {
-                            model: models.Physician,
-                            as: 'primaryPhysician'
-                        }
-                    ]
+                    as: 'service'                    
                 }
             ],
             limit: 10

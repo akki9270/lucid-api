@@ -1,6 +1,8 @@
 module.exports = function (Sequelize, Types) {
     let Key_Indicator = Sequelize.define('Key_Indicator', {
         pediatric_patient: { type: Types.BOOLEAN },
+        call_frequency: { type: Types.ENUM('DAY', 'WEEK', 'MONTH', 'YEAR') },
+        call_count: { type: Types.INTEGER },
         urgent: { type: Types.BOOLEAN },
         engaged_by_escalation_team: { type: Types.BOOLEAN },
         restaff_turnback: { type: Types.BOOLEAN },
