@@ -359,24 +359,28 @@
         "primaryKey": "note_id",
         "data": [
             {
+                "note_id": 1,
                 "datetime": "2020-04-01 10:35:23",
                 "event_name": "Event1",
                 "patient_id": "22258",
                 "intake_id": "33399453"
             },
             {
+                "note_id": 2,
                 "datetime": "2020-05-01 10:25:23",
                 "event_name": "Event2",
                 "patient_id": "22258",
                 "intake_id": "33399453"
             },
             {
+                "note_id": 3,
                 "datetime": "2020-06-03 10:30:23",
                 "event_name": "Event4",
                 "patient_id": "30509",
                 "intake_id": "9695189"
             },
             {
+                "note_id": 4,
                 "datetime": "2020-07-04 11:35:23",
                 "event_name": "Event5",
                 "patient_id": "30509",
@@ -385,27 +389,32 @@
         ]
     },
     {
-        "model": "Timeline",        
+        "model": "Timeline", 
+        "primaryKey": "id",       
         "data": [
             {
+                "id": 1,
                 "note_id": "5e55f02efc13ae4c1a000064",
                 "note_data": "Unspecified transfusion reaction, subsequent encounter",
                 "patient_id": "22258",
                 "intake_id": "33399453"
             },
             {
+                "id": 2,
                 "note_id": "5e55f02efc13ae4c1a000065",
                 "note_data": "Motorized mobility scooter colliding with stationary object, initial encounter",
                 "patient_id": "22258",
                 "intake_id": "33399453"
             },
             {
+                "id": 3,
                 "note_id": "5e55f02efc13ae4c1a000066",
                 "note_data": "Bent bone of right radius, subsequent encounter for open fracture type I or II with routine healing",
                 "patient_id": "30509",
                 "intake_id": "9695189"
             },
             {
+                "id": 4,
                 "note_id": "5e55f02efc13ae4c1a000067",
                 "note_data": "Displaced bimalleolar fracture of right lower leg",
                 "patient_id": "30509",

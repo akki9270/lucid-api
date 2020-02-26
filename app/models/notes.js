@@ -14,12 +14,12 @@ module.exports = function (Sequelize, Types) {
     });
 
     Notes.associate = function (models) {
-        models.Service.belongsTo(models.Patient, {
+        models.Notes.belongsTo(models.Patient, {
             as: 'patient',
             foreignKey: 'patient_id',
             targetKey: 'patient_id'
         });
-        models.Service.belongsTo(models.Patient, {
+        models.Notes.belongsTo(models.Patient, {
             as: 'intake',
             foreignKey: 'intake_id',
             targetKey: 'intake_id'
