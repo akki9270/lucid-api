@@ -7,6 +7,9 @@
 
 const config = require('./config');
 const Patients = require('./routes/Patient');
+const Tags = require('./routes/Tag');
+const Timeline = require('./routes/Timeline');
+const Notes = require('./routes/Notes');
 //require('./passport'); // Include Own passport strategy.. 
 
 module.exports = function (app) {
@@ -31,8 +34,11 @@ module.exports = function (app) {
     });
     app.get('/api/getPatients',Patients.getPatients);
     app.get('/api/getPatients/:patientId',Patients.getPatients);
+    app.get('/api/getTags/',Tags.getTags);
+    app.get('/api/getTimeline/',Timeline.getTimeline);
+    app.get('/api/getNotes/',Notes.getNotes);
     app.get('*', function (req, res) {
-        res.sendfile( config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file
+        res.sendFile( config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file
     });
 
 };
