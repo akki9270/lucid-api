@@ -35,7 +35,7 @@ module.exports = function (app) {
     app.get('/api/getPatients',Patients.getPatients);
     app.get('/api/getPatients/:patientId',Patients.getPatients);
     app.get('/api/getTags/',Tags.getTags);
-    app.get('/api/getTimeline/',Timeline.getTimeline);
+    app.get('/api/getTimeline/:patientId/:intakeId',Timeline.getTimeline);
     app.get('/api/getNotes/',Notes.getNotes);
     app.get('*', function (req, res) {
         res.sendFile( config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file

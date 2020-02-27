@@ -28,7 +28,9 @@ async function getTimeline(req, res, next) {
         }
     }
     try {
-        let timelines = await models.Timeline.findAll();
+        let timelines = await models.Timeline.findAll({
+            where: whereClause
+        });
         return res.status(SUCCESS).send(timelines);
     } catch (error) {
         TIMELOGGER.info(`getTimeline Err:  ${error.message}`, ...logData)
