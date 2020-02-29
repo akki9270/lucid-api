@@ -65,6 +65,7 @@
                 "zipcode": 50960,
                 "insurance_name": "Harizan BCBS NJ - BLUE CARD MEMBERS",
                 "subscriber_id": "",
+                "last_seen": "2020-01-28 10:35:23",
                 "createdAt": "2005-05-28 10:35:23",
                 "updatedAt": "2005-05-28 10:35:23",
                 "deletedAt": null
@@ -85,6 +86,7 @@
                 "zipcode": 50960,
                 "insurance_name": "Harizan BCBS NJ - BLUE CARD MEMBERS",
                 "subscriber_id": "",
+                "last_seen": "2020-01-28 09:35:23",
                 "createdAt": "2005-05-28 10:35:23",
                 "updatedAt": "2005-05-28 10:35:23",
                 "deletedAt": null

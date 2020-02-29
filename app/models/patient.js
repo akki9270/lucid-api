@@ -15,7 +15,8 @@ module.exports = function (Sequelize, Types) {
         state: { type: Types.STRING },
         zipcode: { type: Types.STRING },
         insurance_name: { type: Types.STRING },
-        subscriber_id: { type: Types.STRING }
+        subscriber_id: { type: Types.STRING },
+        last_seen: { type: Types.DATE }
     }, {
         tableName: 'Patient',
         modelName: 'Patient',

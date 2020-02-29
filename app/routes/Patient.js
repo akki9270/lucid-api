@@ -20,6 +20,9 @@ async function getPatients(req, res, next) {
     try {
         let patients = await models.Patient.findAll({
             where: {...whereClause},
+            order: [
+                ['last_seen', 'DESC'],
+            ],
             include: [
                 {
                     model: models.Key_Indicator,
