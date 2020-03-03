@@ -1,7 +1,11 @@
 module.exports = function (Sequelize, Types) {
     let Notes = Sequelize.define('Notes', {
         note_id: { type: Types.STRING, primaryKey: true },
-        note_data: { type: Types.STRING }      
+        note_data: { type: Types.TEXT },
+        operation_center_code: { type: Types.STRING },
+        date: { type: Types.DATE },
+        nex_review_date: { type: Types.DATE }
+        // reviewed: { type: Types.BOOLEAN }        
     }, {
         tableName: 'Notes',
         modelName: 'Notes',
