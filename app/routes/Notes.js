@@ -28,7 +28,7 @@ async function getNotes(req, res, next) {
         }
     }
     try {
-        let notes = await models.Notes.findAll();
+        let notes = await models.Notes.findAll({ where: whereClause });
         return res.status(SUCCESS).send(notes);
     } catch (error) {
         TIMELOGGER.info(`getNotes Err:  ${error.message}`, ...logData)
