@@ -46,6 +46,89 @@
         ]
     },
     {
+        "model": "Users",
+        "primaryKey": "user_id",
+        "data": [{
+            "user_id": 1,
+            "first_name": "Neil",
+            "last_name": "Cosson",
+            "email": "ncosson0@odnoklassniki.ru",
+            "password": "y1Pp05LF8Al",
+            "isAdmin" : false
+          }, {
+            "user_id": 2,
+            "first_name": "Marcos",
+            "last_name": "Dankov",
+            "email": "mdankov1@hc360.com",
+            "password": "3ZVUsh6kDsK",
+            "isAdmin" : false
+          }, {
+            "user_id": 3,
+            "first_name": "Courtnay",
+            "last_name": "Miskin",
+            "email": "cmiskin2@godaddy.com",
+            "password": "bw5vgTDDm",
+            "isAdmin" : false
+          }, {
+            "user_id": 4,
+            "first_name": "Nicolle",
+            "last_name": "Luciani",
+            "email": "nluciani3@dmoz.org",
+            "password": "GWm6RcCOUl7",
+            "isAdmin" : false
+          }, {
+            "user_id": 5,
+            "first_name": "Davidde",
+            "last_name": "Piatti",
+            "email": "dpiatti4@addtoany.com",
+            "password": "5WdTfu8ys",
+            "isAdmin" : false
+          }, {
+            "user_id": 6,
+            "first_name": "Davy",
+            "last_name": "Folling",
+            "email": "dfolling5@sphinn.com",
+            "password": "woemNv4Z",
+            "isAdmin" : false
+          }, {
+            "user_id": 7,
+            "first_name": "Georgy",
+            "last_name": "Bramhall",
+            "email": "gbramhall6@dailymail.co.uk",
+            "password": "9OfuiQf4X",
+            "isAdmin" : false
+          }, {
+            "user_id": 8,
+            "first_name": "Birgit",
+            "last_name": "Stallworthy",
+            "email": "bstallworthy7@virginia.edu",
+            "password": "RCiIHBHsz8HM",
+            "isAdmin" : false
+          }, {
+            "user_id": 9,
+            "first_name": "Helga",
+            "last_name": "Penhalewick",
+            "email": "hpenhalewick8@unc.edu",
+            "password": "AeWl8UN7",
+            "isAdmin" : false
+          }, {
+            "user_id": 10,
+            "first_name": "Nickolaus",
+            "last_name": "Moncrieffe",
+            "email": "nmoncrieffe9@yahoo.com",
+            "password": "sZjmst",
+            "isAdmin" : false
+          }, {
+            "user_id": 11,
+            "first_name": "admin",
+            "last_name": "lucid",
+            "email": "admin@lucid.com",
+            "password": "admin@lucid",
+            "isAdmin" : true
+          }
+        ]
+    },
+    {
         "model": "Patient",
         "primaryKey": "patient_id",
         "data": [

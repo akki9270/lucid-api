@@ -10,6 +10,7 @@ const Patients = require('./routes/Patient');
 const Tags = require('./routes/Tag');
 const Timeline = require('./routes/Timeline');
 const Notes = require('./routes/Notes');
+const Users = require('./routes/Users');
 //require('./passport'); // Include Own passport strategy.. 
 
 module.exports = function (app) {
@@ -32,6 +33,7 @@ module.exports = function (app) {
     app.get('/api', function(req, res) {
         res.send('Success');
     });
+    app.get('/api/getUsers/',Users.getUsers);
     app.get('/api/getPatients',Patients.getPatients);
     app.get('/api/getPatients/:patientId',Patients.getPatients);
     app.get('/api/getTags/',Tags.getTags);
