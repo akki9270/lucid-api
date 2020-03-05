@@ -33,7 +33,11 @@ module.exports = function (app) {
     app.get('/api', function(req, res) {
         res.send('Success');
     });
+    app.post('/api/login', Users.login);
     app.get('/api/getUsers/',Users.getUsers);
+    app.post('/api/user/add',Users.addUser);
+    // app.post('/api/user/update',Users.updateUser)
+    app.post('/api/user/activate', Users.toggleActiveUser)
     app.get('/api/getPatients',Patients.getPatients);
     app.get('/api/getPatients/:patientId',Patients.getPatients);
     app.get('/api/getTags/',Tags.getTags);

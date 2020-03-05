@@ -27,6 +27,11 @@ module.exports = function (Sequelize, Types) {
             foreignKey: 'patient_id',
             targetKey: 'patient_id'
         });
+        models.Key_Indicator.belongsTo(models.Patient, {
+            as: 'intake',
+            foreignKey: 'intake_id',
+            targetKey: 'intake_id'
+        });
     }
 
     return Key_Indicator;
