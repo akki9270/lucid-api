@@ -5,43 +5,53 @@
         "data": [
             {
                 "tag_code": "5e55f127fc13ae5b61000000",
-                "tag_name": "Folic Acid"
+                "tag_name": "Online",
+                "tag_color": "#66ff99"
             },
             {
                 "tag_code": "5e55f127fc13ae5b61000001",
-                "tag_name": "VIRTUAL SKIN"
+                "tag_name": "FIRST CARE",
+                "tag_color": "#0099ff"
             },
             {
                 "tag_code": "5e55f127fc13ae5b61000002",
-                "tag_name": "Be sure to staff"
+                "tag_name": "PHARMACY ONLY",
+                "tag_color": "#ff0000"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000003",
-                "tag_name": "Ibuprofen"
+                "tag_name": "Ibuprofen",
+                "tag_color": "#9999ff"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000004",
-                "tag_name": "Working on staffing"
+                "tag_name": "Working on staffing",
+                "tag_color": "#0099cc"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000005",
-                "tag_name": "Epsom Salt"
+                "tag_name": "Epsom Salt",
+                "tag_color": "#ff66cc"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000006",
-                "tag_name": "Quinapril"
+                "tag_name": "Quinapril",
+                "tag_color": "#ff5050"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000007",
-                "tag_name": "PT was requesting"
+                "tag_name": "PT was requesting",
+                "tag_color": "#cccc00"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000008",
-                "tag_name": "Oxygen"
+                "tag_name": "Oxygen",
+                "tag_color": "#cc3300"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000009",
-                "tag_name": "Lemon Zest Antibacterial Foaming Hand Wash"
+                "tag_name": "Lemon Zest Antibacterial Foaming Hand Wash",
+                "tag_color": "#cc99ff"
             }
         ]
     },
@@ -173,6 +183,7 @@
         "primaryKey": "patient_id",
         "data": [
             {
+                "row_id": 1,
                 "patient_id": "6641737",
                 "intake_id": "8542636",
                 "first_name": "Ardella",
@@ -195,6 +206,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 2,
                 "patient_id": "6641737",
                 "intake_id": "2827480",
                 "first_name": "Ardella",
@@ -217,6 +229,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 3,
                 "patient_id": "7015567",
                 "intake_id": "5001300",
                 "first_name": "Leatrice",
@@ -239,6 +252,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 4,
                 "patient_id": "2826052",
                 "intake_id": "7828102",
                 "first_name": "Demetra",
@@ -261,6 +275,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 5,
                 "patient_id": "0353444",
                 "intake_id": "2022066",
                 "first_name": "Joycelyn",
@@ -283,6 +298,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 6,
                 "patient_id": "3645266",
                 "intake_id": "7353327",
                 "first_name": "Farah",
@@ -305,6 +321,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 7,
                 "patient_id": "8874813",
                 "intake_id": "5441751",
                 "first_name": "Newton",
@@ -327,6 +344,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 8,
                 "patient_id": "0043011",
                 "intake_id": "1543284",
                 "first_name": "Shantay",
@@ -349,6 +367,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 9,
                 "patient_id": "3402710",
                 "intake_id": "5328603",
                 "first_name": "Shaquita",
@@ -371,6 +390,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 10,
                 "patient_id": "2377311",
                 "intake_id": "0377884",
                 "first_name": "Oneida",
@@ -393,6 +413,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 11,
                 "patient_id": "2377311",
                 "intake_id": "1188534",
                 "first_name": "Oneida",
@@ -415,6 +436,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 12,
                 "patient_id": "2638110",
                 "intake_id": "8276401",
                 "first_name": "Samatha",
@@ -437,6 +459,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 13,
                 "patient_id": "6317661",
                 "intake_id": "0725856",
                 "first_name": "Jovan",
@@ -459,6 +482,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 14,
                 "patient_id": "6317661",
                 "intake_id": "6442228",
                 "first_name": "Jovan",
@@ -481,6 +505,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 15,
                 "patient_id": "6335736",
                 "intake_id": "1782681",
                 "first_name": "Melania",
@@ -503,6 +528,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 16,
                 "patient_id": "5653348",
                 "intake_id": "2283333",
                 "first_name": "Julieann",
@@ -525,6 +551,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 17,
                 "patient_id": "5377177",
                 "intake_id": "4010024",
                 "first_name": "Antonia",
@@ -547,6 +574,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 18,
                 "patient_id": "3022527",
                 "intake_id": "6273342",
                 "first_name": "Etta",
@@ -569,6 +597,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 19,
                 "patient_id": "3432407",
                 "intake_id": "4365141",
                 "first_name": "Felica",
@@ -591,6 +620,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 20,
                 "patient_id": "0836033",
                 "intake_id": "0641722",
                 "first_name": "Loralee",
@@ -613,6 +643,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 21,
                 "patient_id": "8200061",
                 "intake_id": "7205580",
                 "first_name": "Zada",
@@ -635,6 +666,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 22,
                 "patient_id": "1133604",
                 "intake_id": "4226060",
                 "first_name": "Lorene",
@@ -657,6 +689,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 23,
                 "patient_id": "6248177",
                 "intake_id": "3806005",
                 "first_name": "Gerry",
@@ -679,6 +712,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 24,
                 "patient_id": "6248177",
                 "intake_id": "3185173",
                 "first_name": "Gerry",
@@ -701,6 +735,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 25,
                 "patient_id": "5882864",
                 "intake_id": "2033773",
                 "first_name": "Keena",
@@ -723,6 +758,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 26,
                 "patient_id": "5882864",
                 "intake_id": "5070534",
                 "first_name": "Keena",
@@ -745,6 +781,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 27,
                 "patient_id": "5882864",
                 "intake_id": "5874825",
                 "first_name": "Keena",
@@ -767,6 +804,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 28,
                 "patient_id": "3530317",
                 "intake_id": "7212173",
                 "first_name": "Kellie",
@@ -789,6 +827,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 29,
                 "patient_id": "5525846",
                 "intake_id": "0751137",
                 "first_name": "Christopher",
@@ -811,6 +850,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 30,
                 "patient_id": "5525573",
                 "intake_id": "7767736",
                 "first_name": "Laurette",
@@ -833,6 +873,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 31,
                 "patient_id": "5525573",
                 "intake_id": "0650482",
                 "first_name": "Laurette",
@@ -855,6 +896,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 32,
                 "patient_id": "0241473",
                 "intake_id": "8014756",
                 "first_name": "Norman",
@@ -877,6 +919,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 34,
                 "patient_id": "3710445",
                 "intake_id": "3720150",
                 "first_name": "Mathilde",
@@ -899,6 +942,7 @@
                 "deletedAt": null
             },
             {
+                "row_id": 35,
                 "patient_id": "0124343",
                 "intake_id": "2772317",
                 "first_name": "Lana",
@@ -918,6 +962,21 @@
                 "last_seen": "2020-01-28 10:35:23",
                 "createdAt": "2005-05-28 10:35:23",
                 "updatedAt": "2005-05-28 10:35:23",
+                "deletedAt": null
+            }
+        ]
+    },
+    {
+        "model": "UserLastseen",
+        "primaryKey": "id",
+        "data": [
+            {
+                "id": 1,
+                "last_seen": "2020-01-28 10:35:23",
+                "user_id": "asia",
+                "row_id": 1,
+                "createdAt": "2028-05-05 10:35:00",
+                "updatedAt": "2028-05-05 10:35:00",
                 "deletedAt": null
             }
         ]
