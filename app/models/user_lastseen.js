@@ -10,11 +10,11 @@ module.exports = function (Sequelize, Types) {
     });
 
     UserLastseen.associate = function (models) {       
-        models.UserLastseen.belongsTo(models.Patient, {
-            as: 'patient',
-            foreignKey: 'row_id',
-            targetKey: 'row_id'
-        });
+        // models.UserLastseen.belongsTo(models.Patient, {
+        //     as: 'patient',
+        //     foreignKey: 'row_id',
+        //     targetKey: 'row_id'
+        // });
         models.UserLastseen.belongsTo(models.Users, {
             as: 'user',
             foreignKey: 'user_id',
