@@ -157,7 +157,7 @@ async function login(req, res, next) {
         let user = await models.Users.findOne({ where: { user_id: user_id, is_active: true } })
         if (!user) {
             TIMELOGGER.warn(`comment: ${USER_NOT_FOUND}`,{...logData});
-            return res.status(USER_NOT_FOUND).send({ message: USER_NOT_FOUND });
+            return res.status(NOT_FOUND).send({ message: USER_NOT_FOUND });
         }
         let hash = models.Users.sha512(password, user.password_salt);
         if (hash.passwordHash === user.password_hash) {
