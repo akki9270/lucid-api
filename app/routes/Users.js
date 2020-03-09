@@ -125,6 +125,28 @@ async function toggleActiveUser(req, res, next) {
     }
 }
 
+async function toggleAdminUser(req, res, next) {
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+    logData.method = 'toggleAdminUser';
+    TIMELOGGER.info(`params: ${JSON.stringify(req.body)}`,{...logData});
+    let data = req.body;
+    let { id, is_admin, user } = data;
+    try {
+        let result = await models.Users.update({is_admin, updatedBy: user.id}, {
+            where: {user_id: id}
+        });
+        // if (result) {
+            res.status(SUCCESS).send(result);
+        // } else {
+        //     timelogger.error(`user: ${user.id} user to update: ${id}`);
+        //     res.status(SERVER_ERROR).send('SERVER_ERROR');
+        // }
+    } catch (err) {
+        TIMELOGGER.error(`Error: ${err.message}`,{...logData});
+        res.status(SERVER_ERROR).send(err.message);
+    }
+}
+
 async function login(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.method = 'login';
@@ -169,4 +191,4 @@ async function login(req, res, next) {
 
 
 
-module.exports = { getUsers, addUser, updateUser, toggleActiveUser, login }
+module.exports = { getUsers, addUser, updateUser, toggleActiveUser, toggleAdminUser ,login }
