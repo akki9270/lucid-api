@@ -6,12 +6,12 @@
             {
                 "tag_code": "5e55f127fc13ae5b61000000",
                 "tag_name": "Online",
-                "tag_color": "#66ff99"
+                "tag_color": "#6b6b47"
             },
             {
                 "tag_code": "5e55f127fc13ae5b61000001",
                 "tag_name": "FIRST CARE",
-                "tag_color": "#0099ff"
+                "tag_color": "#006bb3"
             },
             {
                 "tag_code": "5e55f127fc13ae5b61000002",
@@ -21,27 +21,27 @@
             {
                 "tag_code": "5e55f127fc13ae5b610000003",
                 "tag_name": "Ibuprofen",
-                "tag_color": "#9999ff"
+                "tag_color": "#3333ff"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000004",
                 "tag_name": "Working on staffing",
-                "tag_color": "#0099cc"
+                "tag_color": "#006080"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000005",
                 "tag_name": "Epsom Salt",
-                "tag_color": "#ff66cc"
+                "tag_color": "#990066"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000006",
                 "tag_name": "Quinapril",
-                "tag_color": "#ff5050"
+                "tag_color": "#e60000"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000007",
                 "tag_name": "PT was requesting",
-                "tag_color": "#cccc00"
+                "tag_color": "#666600"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000008",
@@ -51,7 +51,7 @@
             {
                 "tag_code": "5e55f127fc13ae5b610000009",
                 "tag_name": "Lemon Zest Antibacterial Foaming Hand Wash",
-                "tag_color": "#cc99ff"
+                "tag_color": "#336600"
             }
         ]
     },
