@@ -1,12 +1,12 @@
 
 module.exports = function (Sequelize, Types) {
     let Patient = Sequelize.define('Patient', {
-        row_id: { type: Types.INTEGER },
+        // row_id: { type: Types.INTEGER },
         patient_id: { type: Types.STRING, primaryKey: true },
         intake_id: { type: Types.STRING, primaryKey: true },
         first_name: { type: Types.STRING },
         last_name: { type: Types.STRING },
-        health_plan: { type: Types.STRING },
+        // health_plan: { type: Types.STRING },
         days_to_soc: { type: Types.INTEGER },
         dob: { type: Types.DATE },
         gender: { type: Types.STRING },

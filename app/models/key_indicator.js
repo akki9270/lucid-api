@@ -4,12 +4,14 @@ module.exports = function (Sequelize, Types) {
         call_frequency: { type: Types.ENUM('DAY', 'WEEK', 'MONTH', 'YEAR') },
         call_count: { type: Types.INTEGER },
         urgent: { type: Types.BOOLEAN },
-        engaged_by_escalation_team: { type: Types.BOOLEAN },
+        escalation: { type: Types.BOOLEAN },
         restaff_turnback: { type: Types.BOOLEAN },
         primary_care_physician: { type: Types.BOOLEAN },
-        following_physician: { type: Types.BOOLEAN },
+        ordering_physician: { type: Types.BOOLEAN },
         wound_care: { type: Types.BOOLEAN },
         facility_discharge: { type: Types.BOOLEAN },
+        patient_id: { type: Types.STRING, primaryKey: true },
+        intake_id: { type: Types.STRING, primaryKey: true }
     }, {
         tableName: 'Key_Indicator',
         modelName: 'Key_Indicator',
