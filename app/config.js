@@ -19,7 +19,7 @@ exports.ENVIRON = ENVIRON;
 exports.SQL = {
   "username": process.env.DB_USERNAME || "root",
   //"password": "process.env.SQL_PASSWORD",
-  "password": process.env.DB_PASSWORD || "",
+  "password": process.env.DB_PASSWORD || "password",
   "database": process.env.DB_NAME ||"lucid",
   "host": process.env.DB_HOST||"localhost",
      // "host":"localhost",
