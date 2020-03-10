@@ -49,7 +49,7 @@ module.exports = function (app) {
     app.get('/api/getLastSeenPatients/:userId/:rowId', UserLastseen.getLastSeenPatients);
     app.post('/api/addPatientLastseen', UserLastseen.addPatientLastseenByUser);
     app.get('*', function (req, res) {
-        res.sendFile(__dirname + '/public/index.html')
+        res.sendFile(__dirname + '../public/index.html')
         // res.sendFile(config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file
     });
 
