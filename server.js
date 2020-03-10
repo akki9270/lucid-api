@@ -24,7 +24,7 @@ const { TIMELOGGER } = require('./app/winston');
 // var db = require('./config/db');
 
 // set our port
-var port = process.env.APP_PORT || 80;
+var port = process.env.APP_PORT || 8080;
 
 // app.use(passport.initialize());
 app.use(helmet());
