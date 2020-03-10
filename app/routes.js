@@ -12,6 +12,7 @@ const Timeline = require('./routes/Timeline');
 const Notes = require('./routes/Notes');
 const Users = require('./routes/Users');
 const UserLastseen = require('./routes/UserLastseen');
+const path = require('path');
 //require('./passport'); // Include Own passport strategy.. 
 
 module.exports = function (app) {
@@ -49,7 +50,7 @@ module.exports = function (app) {
     app.get('/api/getLastSeenPatients/:userId/:rowId', UserLastseen.getLastSeenPatients);
     app.post('/api/addPatientLastseen', UserLastseen.addPatientLastseenByUser);
     app.get('*', function (req, res) {
-        res.sendFile(__dirname + '../public/index.html')
+        res.sendFile(path.resolve() + '/public/index.html')
         // res.sendFile(config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file
     });
 
