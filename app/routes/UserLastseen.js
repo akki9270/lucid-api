@@ -37,19 +37,24 @@ async function addPatientLastseenByUser(req, res, next) {
     logData.method = 'addPatientLastseenByUser';
     TIMELOGGER.info(`params: ${JSON.stringify(req.body)}`, { ...logData });
     let data = req.body;    
-    let { last_Seen, user_id, row_id } = data;
+    let { last_Seen, user_id, intake_id, patient_id } = data;
     try {
         let existingUser = await models.UserLastseen.findOne({ 
             where: { 
-                user_id: user_id,
-                row_id
+                user_id,
+                intake_id,
+                patient_id
              } }, { raw: true });
         // console.log('existingUser ', existingUser);
         if (existingUser) {
+            models.UserLastseen.update({
+                last_seen: new Date()
+            }, { where: { id: existingUser.id } });
+
             TIMELOGGER.warn(`data: Existing User ${existingUser}`, { ...logData });
             return res.status(SUCCESS).send({message: 'User Already Exists with Same USER ID.'})
         }
-        let result = await models.UserLastseen.create({ user_id, row_id, last_seen: last_Seen });
+        let result = await models.UserLastseen.create({ user_id, intake_id, patient_id, last_seen: last_Seen });
         res.status(SUCCESS).send(result);
     } catch (err) {
         TIMELOGGER.error(`Error: ${err.message}`, { ...logData });

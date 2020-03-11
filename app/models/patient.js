@@ -41,6 +41,10 @@ module.exports = function (Sequelize, Types) {
             as: 'service',
             foreignKey: 'patient_id'
         });
+        models.Patient.hasMany(models.UserLastseen, {
+            as: 'userLastSeen',
+            foreignKey: 'patient_id'
+        })
     }
     return Patient;
 }
