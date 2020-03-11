@@ -39,8 +39,8 @@ module.exports = function (app) {
     app.get('/api/getUsers/', Users.getUsers);
     app.post('/api/user/add', Users.addUser);
     // app.post('/api/user/update',Users.updateUser)
-    app.post('/api/user/activate', Users.toggleActiveUser)
-    app.post('/api/user/isadmin', Users.toggleActiveUser)
+    app.post('/api/user/isactivate', Users.toggleActiveUser)
+    app.post('/api/user/isadmin', Users.toggleAdminUser)
     app.get('/api/getPatients', Patients.getPatients);
     app.get('/api/getPatients/:patientId', Patients.getPatients);
     app.get('/api/getTags/', Tags.getTags);
@@ -48,7 +48,7 @@ module.exports = function (app) {
     app.get('/api/getNotes/:patientId/:intakeId', Notes.getNotes);
     app.get('/api/getNotes/:patientId/:intakeId', Notes.getNotes);
     app.get('/api/getLastSeenPatients/:userId/:rowId', UserLastseen.getLastSeenPatients);
-    app.post('/api/addPatientLastseen', UserLastseen.addPatientLastseenByUser);
+    app.post('/api/addPatientLastseen', UserLastseen.addPatientLastseenByUser);    
     app.get('*', function (req, res) {
         res.sendFile(path.resolve() + '/public/index.html')
         // res.sendFile(config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file
