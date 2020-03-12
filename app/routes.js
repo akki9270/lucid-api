@@ -38,7 +38,7 @@ module.exports = function (app) {
     app.post('/api/login', Users.login);
     app.get('/api/getUsers/', Users.getUsers);
     app.post('/api/user/add', Users.addUser);
-    // app.post('/api/user/update',Users.updateUser)
+    app.post('/api/user/update',Users.updateUser)
     app.post('/api/user/isactivate', Users.toggleActiveUser)
     app.post('/api/user/isadmin', Users.toggleAdminUser)
     app.get('/api/getPatients', Patients.getPatients);

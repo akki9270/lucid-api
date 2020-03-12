@@ -60,14 +60,14 @@ async function addUser(req, res, next) {
 async function updateUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.method = 'updateUser';
-    timelogger.info(`params: ${JSON.stringify(req.body)}`, { ...logData });
+    TIMELOGGER.info(`params: ${JSON.stringify(req.body)}`, { ...logData });
     let data = req.body;
-    let { id, first_name, last_name, password, is_admin, user } = data;
+    let { id, password, is_admin, user } = data;
     let result;
     try {
         if (data.newPassword) {
-            let existingUser = await models.Assignee.findOne({ where: { user_id: id } });
-            let hash = models.Assignee.sha512(password, existingUser.password_salt);
+            let existingUser = await models.Users.findOne({ where: { user_id: id } });
+            let hash = models.Users.sha512(password, existingUser.password_salt);
             if (hash.passwordHash !== existingUser.password_hash) {
                 return res.status(SERVER_ERROR).send('Current Password Wrong.');
             } else {
@@ -75,17 +75,17 @@ async function updateUser(req, res, next) {
             }
         }
         if (password) {
-            let salt = models.Assignee.genRandomString(16);
-            let hash = models.Assignee.sha512(password, salt);
+            let salt = models.Users.genRandomString(16);
+            let hash = models.Users.sha512(password, salt);
             let password_hash = hash.passwordHash;
-            result = await models.Assignee.update({
+            result = await models.Users.update({
                 password_hash,
                 password_salt: salt,
                 updatedBy: user.id,
                 updatedAt: models.sequelize.literal('CURRENT_TIMESTAMP')
             }, { where: { user_id: id } });
         } else {
-            result = await models.Assignee.update({ name, is_admin, updatedBy: user.id }, {
+            result = await models.Users.update({ name, is_admin, updatedBy: user.id }, {
                 where: { user_id: id }
             });
         }
@@ -93,12 +93,12 @@ async function updateUser(req, res, next) {
         // if (result) {
         res.status(SUCCESS).send(result);
         // } else {
-        //     timelogger.error(`method: app/routes/userRoutes/updateUser`);
-        //     timelogger.error(`user: ${user.id} user to update: ${id}`);
+        //     TIMELOGGER.error(`method: app/routes/userRoutes/updateUser`);
+        //     TIMELOGGER.error(`user: ${user.id} user to update: ${id}`);
         //     res.status(SERVER_ERROR).send('SERVER_ERROR');
         // }
     } catch (err) {
-        timelogger.error(`Error: ${err.message}`, { ...logData });
+        TIMELOGGER.error(`Error: ${err.message}`, { ...logData });
         res.status(SERVER_ERROR).send(err.message);
     }
 }
