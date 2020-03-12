@@ -15,7 +15,7 @@ jwtOptions.secretOrKey = config.SECRET;
 
 // lets create our strategy for web token
 let strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
-    console.log('payload received', jwt_payload);
+    // console.log('payload received', jwt_payload);
     let user = userRoute.getUser({ user_id: jwt_payload.id });
     if (user) {
       next(null, user);
