@@ -31,6 +31,17 @@ async function getUsers(req, res, next) {
     }
 }
 
+async function getUser(obj) {
+    let logData = { method: 'getUser'};
+    try {
+        return await models.Users.findOne({
+            where: obj
+        })
+    } catch (err) {
+        timelogger.error(`Error: ${err.message}`,{...logData});
+    }
+}
+
 async function addUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.method = 'addUser';
@@ -191,4 +202,4 @@ async function login(req, res, next) {
 
 
 
-module.exports = { getUsers, addUser, updateUser, toggleActiveUser, toggleAdminUser, login }
+module.exports = { getUsers, addUser, updateUser, toggleActiveUser, toggleAdminUser, login, getUser }

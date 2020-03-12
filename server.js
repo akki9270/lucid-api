@@ -15,7 +15,7 @@ var fs = require('fs');
 const config = require('./app/config');
 config.isProd = process.argv.includes('--production');
 // import passport and passport-jwt modules
-// const passport = require('passport');
+const passport = require('passport');
 const helmet = require('helmet');
 const { TIMELOGGER } = require('./app/winston');
 // configuration ===========================================
@@ -26,7 +26,7 @@ const { TIMELOGGER } = require('./app/winston');
 // set our port
 var port = process.env.APP_PORT || 8080;
 
-// app.use(passport.initialize());
+app.use(passport.initialize());
 app.use(helmet());
 
 
