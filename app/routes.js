@@ -14,6 +14,16 @@ const Users = require('./routes/Users');
 const UserLastseen = require('./routes/UserLastseen');
 const path = require('path');
 //require('./passport'); // Include Own passport strategy.. 
+var checkValidity = function(req, res, next) {
+    if (req.path.indexOf('login') > -1) {
+        next();
+    } else {
+        let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) :
+        req.query ? req.query : {};
+        let isValidToken = Users.UserLoginStatus[logData.user];
+        isValidToken ? next() : res.status(401).send('Unauthorized');
+    }
+}
 
 module.exports = function (app) {
 
@@ -36,19 +46,20 @@ module.exports = function (app) {
         res.send('Success');
     });
     app.post('/api/login', Users.login);
-    app.get('/api/getUsers/', Users.getUsers);
-    app.post('/api/user/add', Users.addUser);
+    app.get('/api/logout', Users.logout);
+    app.get('/api/getUsers/', checkValidity, Users.getUsers);
+    app.post('/api/user/add', checkValidity, Users.addUser);
     app.post('/api/user/update',Users.updateUser)
-    app.post('/api/user/isactivate', Users.toggleActiveUser)
-    app.post('/api/user/isadmin', Users.toggleAdminUser)
-    app.get('/api/getPatients', Patients.getPatients);
-    app.get('/api/getPatients/:patientId', Patients.getPatients);
-    app.get('/api/getTags/', Tags.getTags);
-    app.get('/api/getTimeline/:patientId/:intakeId', Timeline.getTimeline);
-    app.get('/api/getNotes/:patientId/:intakeId', Notes.getNotes);
-    app.get('/api/getNotes/:patientId/:intakeId', Notes.getNotes);
-    app.get('/api/getLastSeenPatients/:userId/:rowId', UserLastseen.getLastSeenPatients);
-    app.post('/api/addPatientLastseen', UserLastseen.addPatientLastseenByUser);    
+    app.post('/api/user/isactivate', checkValidity, Users.toggleActiveUser)
+    app.post('/api/user/isadmin', checkValidity, Users.toggleAdminUser)
+    app.get('/api/getPatients', checkValidity, Patients.getPatients);
+    app.get('/api/getPatients/:patientId', checkValidity, Patients.getPatients);
+    app.get('/api/getTags/', checkValidity, Tags.getTags);
+    app.get('/api/getTimeline/:patientId/:intakeId', checkValidity, Timeline.getTimeline);
+    app.get('/api/getNotes/:patientId/:intakeId', checkValidity, Notes.getNotes);
+    app.get('/api/getNotes/:patientId/:intakeId', checkValidity, Notes.getNotes);
+    app.get('/api/getLastSeenPatients/:userId/:rowId', checkValidity, UserLastseen.getLastSeenPatients);
+    app.post('/api/addPatientLastseen', checkValidity, UserLastseen.addPatientLastseenByUser);    
     app.get('*', function (req, res) {
         res.sendFile(path.resolve() + '/public/index.html')
         // res.sendFile(config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file

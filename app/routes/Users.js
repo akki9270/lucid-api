@@ -5,6 +5,7 @@ const HTTP_UTIL = require('../http_util');
 const TIMELOGGER = require('../winston').TIMELOGGER;
 const jwt = require('jsonwebtoken');
 const config = require('../config');
+const UserLoginStatus = {};
 
 async function getUsers(req, res, next) {
     let logData = { method: 'getUsers' };
@@ -147,6 +148,14 @@ async function toggleAdminUser(req, res, next) {
     }
 }
 
+async function logout(req, res) {
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+    logData.method = 'logout';
+    TIMELOGGER.info(`comment: logOut`,{...logData});
+    UserLoginStatus[logData.user] = false;
+    res.status(200).send('OK');
+}
+
 async function login(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.method = 'login';
@@ -173,7 +182,7 @@ async function login(req, res, next) {
                 last_name: user.last_name
             }
             logData.user = data.id;
-            // UserLoginStatus[data.id] = true
+            UserLoginStatus[data.id] = true
             TIMELOGGER.info(`comment: Logged In`, { ...logData });
             return res.status(SUCCESS).send({ message: 'ok', token: token, user: data })
         } else {
@@ -191,4 +200,4 @@ async function login(req, res, next) {
 
 
 
-module.exports = { getUsers, addUser, updateUser, toggleActiveUser, toggleAdminUser, login }
+module.exports = { getUsers, addUser, updateUser, toggleActiveUser, toggleAdminUser, login, logout, UserLoginStatus }

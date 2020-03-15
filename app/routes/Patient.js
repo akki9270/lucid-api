@@ -45,11 +45,7 @@ async function getPatients(req, res, next) {
         // fetch data from patient table for matched rows
         let matchedPatients = await models.Patient.findAll({
             where: matcheWhereClause,
-            include: [
-                {
-                    model: models.Key_Indicator,
-                    as: 'key_indicator'
-                },
+            include: [                
                 {
                     model: models.Service,
                     as: 'service'
@@ -74,11 +70,7 @@ async function getPatients(req, res, next) {
                 // order: [
                 //     ['last_seen', 'DESC'],
                 // ],
-                include: [
-                    {
-                        model: models.Key_Indicator,
-                        as: 'key_indicator'
-                    },
+                include: [                   
                     {
                         model: models.Service,
                         as: 'service'
