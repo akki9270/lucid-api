@@ -4,7 +4,8 @@ module.exports = function (Sequelize, Types) {
         note_data: { type: Types.TEXT },
         operation_center_code: { type: Types.STRING },
         date: { type: Types.DATE },
-        nex_review_date: { type: Types.DATE }
+        nex_review_date: { type: Types.DATE },
+        parsed_flag: { type: Types.TINYINT(0), defaultValue: 0 }
         // reviewed: { type: Types.BOOLEAN }        
     }, {
         tableName: 'Notes',

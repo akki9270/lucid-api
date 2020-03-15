@@ -13,8 +13,22 @@ const Notes = require('./routes/Notes');
 const Users = require('./routes/Users');
 const UserLastseen = require('./routes/UserLastseen');
 const path = require('path');
+
 const passport = require('passport');
 require('./passport'); // Include Own passport strategy.. 
+
+//require('./passport'); // Include Own passport strategy.. 
+var checkValidity = function(req, res, next) {
+    if (req.path.indexOf('login') > -1) {
+        next();
+    } else {
+        let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) :
+        req.query ? req.query : {};
+        let isValidToken = Users.UserLoginStatus[logData.user];
+        isValidToken ? next() : res.status(401).send('Unauthorized');
+    }
+}
+
 
 module.exports = function (app) {
 
@@ -37,19 +51,21 @@ module.exports = function (app) {
         res.send('Success');
     });
     app.post('/api/login', Users.login);
-    app.get('/api/getUsers/', passport.authenticate('jwt', {session: false}), Users.getUsers);
-    app.post('/api/user/add', passport.authenticate('jwt', {session: false}), Users.addUser);
-    app.post('/api/user/update', passport.authenticate('jwt', {session: false}), Users.updateUser)
-    app.post('/api/user/isactivate', passport.authenticate('jwt', {session: false}), Users.toggleActiveUser)
-    app.post('/api/user/isadmin', passport.authenticate('jwt', {session: false}), Users.toggleAdminUser)
-    app.get('/api/getPatients', passport.authenticate('jwt', {session: false}), Patients.getPatients);
-    app.get('/api/getPatients/:patientId', passport.authenticate('jwt', {session: false}), Patients.getPatients);
-    app.get('/api/getTags/', passport.authenticate('jwt', {session: false}), Tags.getTags);
-    app.get('/api/getTimeline/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), Timeline.getTimeline);
-    app.get('/api/getNotes/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), Notes.getNotes);
-    app.get('/api/getNotes/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), Notes.getNotes);
-    app.get('/api/getLastSeenPatients/:userId/:rowId', passport.authenticate('jwt', {session: false}), UserLastseen.getLastSeenPatients);
-    app.post('/api/addPatientLastseen', passport.authenticate('jwt', {session: false}), UserLastseen.addPatientLastseenByUser);    
+    app.get('/api/logout', Users.logout);
+    app.get('/api/getUsers/', passport.authenticate('jwt', {session: false}), checkValidity, Users.getUsers);
+    app.post('/api/user/add', passport.authenticate('jwt', {session: false}), checkValidity, Users.addUser);
+    app.post('/api/user/update', passport.authenticate('jwt', {session: false}), checkValidity, Users.updateUser)
+    app.post('/api/user/isactivate', passport.authenticate('jwt', {session: false}), checkValidity, Users.toggleActiveUser)
+    app.post('/api/user/isadmin', passport.authenticate('jwt', {session: false}), checkValidity, Users.toggleAdminUser)
+    app.get('/api/getPatients', passport.authenticate('jwt', {session: false}), checkValidity, Patients.getPatients);
+    app.get('/api/getPatients/:patientId', passport.authenticate('jwt', {session: false}), checkValidity, Patients.getPatients);
+    app.get('/api/getTags/', passport.authenticate('jwt', {session: false}), checkValidity, Tags.getTags);
+    app.get('/api/getTimeline/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), checkValidity, Timeline.getTimeline);
+    app.get('/api/getNotes/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), checkValidity, Notes.getNotes);
+    app.get('/api/getNotes/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), checkValidity, Notes.getNotes);
+    app.get('/api/getLastSeenPatients/:userId/:rowId', passport.authenticate('jwt', {session: false}), checkValidity, UserLastseen.getLastSeenPatients);
+    app.post('/api/addPatientLastseen', passport.authenticate('jwt', {session: false}), checkValidity, UserLastseen.addPatientLastseenByUser);
+  
     app.get('*', function (req, res) {
         res.sendFile(path.resolve() + '/public/index.html')
         // res.sendFile(config.isProd ? './public/dist/index.html' : './public/index.html'); // load our public/index.html file
