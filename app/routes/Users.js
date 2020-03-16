@@ -39,7 +39,7 @@ async function getUser(obj) {
             where: obj
         })
     } catch (err) {
-        timelogger.error(`Error: ${err.message}`,{...logData});
+        TIMELOGGER.error(`Error: ${err.message}`,{...logData});
     }
 }
 
@@ -211,4 +211,4 @@ async function login(req, res, next) {
 
 
 
-module.exports = { getUsers, addUser, updateUser, toggleActiveUser, toggleAdminUser, login, logout, UserLoginStatus }
+module.exports = { getUser, getUsers, addUser, updateUser, toggleActiveUser, toggleAdminUser, login, logout, UserLoginStatus }

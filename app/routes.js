@@ -22,9 +22,8 @@ var checkValidity = function(req, res, next) {
     if (req.path.indexOf('login') > -1) {
         next();
     } else {
-        let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) :
-        req.query ? req.query : {};
-        let isValidToken = Users.UserLoginStatus[logData.user];
+        let user = req.headers.user;
+        let isValidToken = Users.UserLoginStatus[user];
         isValidToken ? next() : res.status(401).send('Unauthorized');
     }
 }
@@ -61,7 +60,7 @@ module.exports = function (app) {
     app.get('/api/getPatients/:patientId', passport.authenticate('jwt', {session: false}), checkValidity, Patients.getPatients);
     app.get('/api/getTags/', passport.authenticate('jwt', {session: false}), checkValidity, Tags.getTags);
     app.get('/api/getTimeline/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), checkValidity, Timeline.getTimeline);
-    app.get('/api/getNotes/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), checkValidity, Notes.getNotes);
+    app.get('/api/getNotes/:patientId', passport.authenticate('jwt', {session: false}), checkValidity, Notes.getNotes);
     app.get('/api/getNotes/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), checkValidity, Notes.getNotes);
     app.get('/api/getLastSeenPatients/:userId/:rowId', passport.authenticate('jwt', {session: false}), checkValidity, UserLastseen.getLastSeenPatients);
     app.post('/api/addPatientLastseen', passport.authenticate('jwt', {session: false}), checkValidity, UserLastseen.addPatientLastseenByUser);
