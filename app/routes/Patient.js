@@ -3,6 +3,36 @@ const Sequelize = require('sequelize');
 const { STATUS_CODES: { UNAUTHORIZED, SERVER_ERROR, SUCCESS } } = require('../http_util');
 const TIMELOGGER = require('../winston').TIMELOGGER;
 
+async function getFilterPatientData(req, res, next) {    
+    let logData = { method: 'getFilterPatientData' };
+    // TIMELOGGER.info(`Comment: Entry`, {...logData});
+    let params;
+    try {
+        params = req.query;
+        let attributes = [];
+        let limit = 10;
+        let column = '';
+
+        for (let i in params) {
+            column = i;
+            // params[i] = { like: '%' + params[i] + '%' }
+            // params[i] = { like: '%' + params[i] + '%' }
+            attributes.push([models.sequelize.fn('DISTINCT', models.sequelize.col(i)), i])
+        }
+
+        let filterData = await models.Patient.findAll({
+            attributes,
+            where: models.sequelize.literal("CAST(`" + column + "` as CHAR) like '%" + params[column] + "%'"),
+            limit: limit
+        });
+        return res.status(200).send(filterData);
+    } catch (err) {        
+        TIMELOGGER.info(`data: ${params}`,{...logData});
+        TIMELOGGER.error(`Error: ${err.message}`,{...logData});
+        res.status(500).send(err.message);
+    }
+}
+
 async function getPatients(req, res, next) {
     let logData = { method: 'getPatients' };
     let pathParams = req.params;
@@ -90,4 +120,4 @@ async function getPatients(req, res, next) {
 
 
 
-module.exports = { getPatients }
+module.exports = { getPatients, getFilterPatientData }
