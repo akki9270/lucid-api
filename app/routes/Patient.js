@@ -83,6 +83,7 @@ async function getPatients(req, res, next) {
                     as: 'userLastSeen'
                 }
             ],
+            limit: 10,
             order: [[{ model: models.UserLastseen, as: 'userLastSeen' }, 'last_seen', 'DESC']]
             // raw: true
         });
