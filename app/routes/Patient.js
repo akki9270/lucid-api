@@ -58,6 +58,7 @@ async function getPatients(req, res, next) {
 
         // create condition for getting data which matches to patient table
         let matcheWhereClause = {};
+        let matchedPatients;
         if (matchedRows.length) {
             let conditionData = []
             matchedRows.forEach(item => {
@@ -69,9 +70,9 @@ async function getPatients(req, res, next) {
                 })
             })
             matcheWhereClause[Sequelize.Op.or] = conditionData;
-        }
+        // }
         // fetch data from patient table for matched rows
-        let matchedPatients = await models.Patient.findAll({
+        matchedPatients = await models.Patient.findAll({
             where: matcheWhereClause,
             include: [
                 {
@@ -87,12 +88,28 @@ async function getPatients(req, res, next) {
             order: [[{ model: models.UserLastseen, as: 'userLastSeen' }, 'last_seen', 'DESC']]
             // raw: true
         });
+        }
+        let filterPatients = [];
         if (!matchedPatients) {
             matchedPatients = [];
         } else {
             resultPatients.push(...matchedPatients);
+            matchedPatients.forEach(item => {
+                filterPatients.push({
+                    [Sequelize.Op.and]:
+                    [
+                        { patient_id: { [Sequelize.Op.ne]: item.patient_id } },
+                        { intake_id: { [Sequelize.Op.ne]: item.intake_id } } ]
+                });
+            });
         }
         // console.log('matched Patients ', matchedPatients.length);
+        if (matchedPatients.length) {
+            whereClause = {
+                ...whereClause,
+                [Sequelize.Op.and]: filterPatients
+            }
+        }
         if (matchedPatients.length < 10) {
             let patients = await models.Patient.findAll({
                 where: { ...whereClause },
