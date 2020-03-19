@@ -19,7 +19,7 @@ require('./passport'); // Include Own passport strategy..
 
 //require('./passport'); // Include Own passport strategy.. 
 var checkValidity = function(req, res, next) {
-    if (req.path.indexOf('login') > -1) {
+    if (req.path.indexOf('login') > -1 || req.path.indexOf('logout') > -1) {
         next();
     } else {
         let user = req.headers.user;
@@ -58,7 +58,8 @@ module.exports = function (app) {
     app.post('/api/user/isadmin', passport.authenticate('jwt', {session: false}), checkValidity, Users.toggleAdminUser)
     app.get('/api/getPatients', passport.authenticate('jwt', {session: false}), checkValidity, Patients.getPatients);
     app.get('/api/getPatients/:patientId', passport.authenticate('jwt', {session: false}), checkValidity, Patients.getPatients);
-    app.get('/api/getPatientsFilterData', passport.authenticate('jwt', {session: false }),checkValidity, Patients.getFilterPatientData);
+    app.get('/api/getPatientsFilterData/:query/:field', passport.authenticate('jwt', {session: false }),checkValidity, Patients.getFilterPatientData);
+    app.get('/api/getPatientsSortedData/:direction', passport.authenticate('jwt', {session: false }),checkValidity, Patients.getSortedPatientData);
     app.get('/api/getTags/', passport.authenticate('jwt', {session: false}), checkValidity, Tags.getTags);
     app.get('/api/getTimeline/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), checkValidity, Timeline.getTimeline);
     app.get('/api/getNotes/:patientId', passport.authenticate('jwt', {session: false}), checkValidity, Notes.getNotes);

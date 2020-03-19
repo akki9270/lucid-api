@@ -159,12 +159,12 @@ async function toggleAdminUser(req, res, next) {
     }
 }
 
-async function logout(req, res) {
-    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+function logout(req, res) {
+    let logData = {user: req.headers.user};
     logData.method = 'logout';
     TIMELOGGER.info(`comment: logOut`,{...logData});
     UserLoginStatus[logData.user] = false;
-    res.status(200).send('OK');
+    res.status(SUCCESS).send();
 }
 
 async function login(req, res, next) {

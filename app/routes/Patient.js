@@ -3,32 +3,29 @@ const Sequelize = require('sequelize');
 const { STATUS_CODES: { UNAUTHORIZED, SERVER_ERROR, SUCCESS } } = require('../http_util');
 const TIMELOGGER = require('../winston').TIMELOGGER;
 
-async function getFilterPatientData(req, res, next) {    
+async function getFilterPatientData(req, res, next) {
     let logData = { method: 'getFilterPatientData' };
-    // TIMELOGGER.info(`Comment: Entry`, {...logData});
+    TIMELOGGER.info(`Comment: Entry`, {...logData});
     let params;
     try {
-        params = req.query;
-        let attributes = [];
+        params = req.params;
+        whereClauseStr = '';
         let limit = 10;
-        let column = '';
-
-        for (let i in params) {
-            column = i;
-            // params[i] = { like: '%' + params[i] + '%' }
-            // params[i] = { like: '%' + params[i] + '%' }
-            attributes.push([models.sequelize.fn('DISTINCT', models.sequelize.col(i)), i])
-        }
+        whereClauseStr += " CAST(`" + params.field.toString() + "` as CHAR) like '%" + params.query + "%'"
 
         let filterData = await models.Patient.findAll({
-            attributes,
-            where: models.sequelize.literal("CAST(`" + column + "` as CHAR) like '%" + params[column] + "%'"),
+            where: models.sequelize.literal(whereClauseStr),
+            include: [
+                {
+                    model: models.Service,
+                    as: 'service'
+                }
+            ],
             limit: limit
         });
         return res.status(200).send(filterData);
-    } catch (err) {        
-        TIMELOGGER.info(`data: ${params}`,{...logData});
-        TIMELOGGER.error(`Error: ${err.message}`,{...logData});
+    } catch (err) {
+        TIMELOGGER.error(`Error: ${err.message}`, { ...logData });
         res.status(500).send(err.message);
     }
 }
@@ -65,17 +62,18 @@ async function getPatients(req, res, next) {
             let conditionData = []
             matchedRows.forEach(item => {
                 conditionData.push({
-                [Sequelize.Op.and]: [
-                    { patient_id: item.patient_id },
-                    { intake_id: item.intake_id }
-                ]})
+                    [Sequelize.Op.and]: [
+                        { patient_id: item.patient_id },
+                        { intake_id: item.intake_id }
+                    ]
+                })
             })
             matcheWhereClause[Sequelize.Op.or] = conditionData;
         }
         // fetch data from patient table for matched rows
         let matchedPatients = await models.Patient.findAll({
             where: matcheWhereClause,
-            include: [                
+            include: [
                 {
                     model: models.Service,
                     as: 'service'
@@ -85,7 +83,7 @@ async function getPatients(req, res, next) {
                     as: 'userLastSeen'
                 }
             ],
-            order: [[{model: models.UserLastseen, as: 'userLastSeen'},'last_seen', 'DESC']]
+            order: [[{ model: models.UserLastseen, as: 'userLastSeen' }, 'last_seen', 'DESC']]
             // raw: true
         });
         if (!matchedPatients) {
@@ -100,7 +98,7 @@ async function getPatients(req, res, next) {
                 // order: [
                 //     ['last_seen', 'DESC'],
                 // ],
-                include: [                   
+                include: [
                     {
                         model: models.Service,
                         as: 'service'
@@ -117,7 +115,33 @@ async function getPatients(req, res, next) {
     }
 }
 
+async function getSortedPatientData(req, res, next) {
+    let logData = { method: 'getFilterPatientData' };
+    try {
+        params = req.params;
+        let patientIds = await models.Service.findAll({
+            attributes:[['patient_id', 'patientId']],
+            where: models.sequelize.literal('datediff(now(), `start_date`) > 0'),
+            order:[[models.sequelize.literal('datediff(now(), `start_date`) ' + params.direction)]],
+            raw: true
+        });
+        let Ids = patientIds.map(item => item.patientId);
+        let patients = await models.Patient.findAll({
+            where: {patient_id: {[Sequelize.Op.in]: Ids}},
+            include: [
+                {
+                    model: models.Service,
+                    as: 'service'
+                }
+            ],
+            limit: 10,
+        });
+        return res.status(SUCCESS).send(patients);
+    } catch (error) {
+        // TIMELOGGER.info(`getPatients Err:  ${error.message}`, ...logData)
+        return res.status(SERVER_ERROR).send();
+    }
+}
 
 
-
-module.exports = { getPatients, getFilterPatientData }
+module.exports = { getPatients, getFilterPatientData, getSortedPatientData }
