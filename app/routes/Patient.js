@@ -4,8 +4,11 @@ const { STATUS_CODES: { UNAUTHORIZED, SERVER_ERROR, SUCCESS } } = require('../ht
 const TIMELOGGER = require('../winston').TIMELOGGER;
 
 async function getFilterPatientData(req, res, next) {
-    let logData = { method: 'getFilterPatientData' };
-    TIMELOGGER.info(`Comment: Entry`, {...logData});
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.page = 'Patients';   
+    logData.method = 'getFilterPatientData';    
+    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });    
     let params;
     try {
         params = req.params;
@@ -31,7 +34,11 @@ async function getFilterPatientData(req, res, next) {
 }
 
 async function getPatients(req, res, next) {
-    let logData = { method: 'getPatients' };
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.method = 'getPatients';
+    logData.page = 'Patients';    
+    TIMELOGGER.info(`Comment: Entry`, {...logData});
     let pathParams = req.params;
     let { user } = req.headers;
     let patientId = '';
@@ -133,8 +140,12 @@ async function getPatients(req, res, next) {
     }
 }
 
-async function getSortedPatientData(req, res, next) {
-    let logData = { method: 'getFilterPatientData' };
+async function getSortedPatientData(req, res, next) {    
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.method = 'getSortedPatientData';
+    logData.page = 'Patients';    
+    // TIMELOGGER.info(`Comment: Entry`, {...logData});
     try {
         params = req.params;
         let patientIds = await models.Service.findAll({
@@ -154,9 +165,10 @@ async function getSortedPatientData(req, res, next) {
             ],
             limit: 10,
         });
+        TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
         return res.status(SUCCESS).send(patients);
     } catch (error) {
-        // TIMELOGGER.info(`getPatients Err:  ${error.message}`, ...logData)
+        TIMELOGGER.info(`getSortedPatientData Err:  ${error.message}`, ...logData)
         return res.status(SERVER_ERROR).send();
     }
 }

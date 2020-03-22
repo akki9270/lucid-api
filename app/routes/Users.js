@@ -8,7 +8,11 @@ const config = require('../config');
 const UserLoginStatus = {};
 
 async function getUsers(req, res, next) {
-    let logData = { method: 'getUsers' };
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.method = 'getUsers';
+    logData.page = 'Admin'
+    TIMELOGGER.info(`Comment: Entry`, { ...logData });
     // let pathParams = req.params;
     // let patientId = '';
     let whereClause = {};
@@ -32,28 +36,33 @@ async function getUsers(req, res, next) {
     }
 }
 
-async function getUser(obj) {
-    let logData = { method: 'getUser'};
+async function getUser(obj) {    
+    let logData = obj && obj.user_id ? { user: obj.user_id } : {};    
+    logData.method = 'getUser';
+    // logData.page = 'Admin';
+    TIMELOGGER.info(`Comment: Entry`, { ...logData });
     try {
         return await models.Users.findOne({
             where: obj
         })
     } catch (err) {
-        TIMELOGGER.error(`Error: ${err.message}`,{...logData});
+        TIMELOGGER.error(`Error: ${err.message}`, { ...logData });
     }
 }
 
 async function addUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+    logData.user = req.headers.user ? req.headers.user : undefined
     logData.method = 'addUser';
-    TIMELOGGER.info(`params: ${JSON.stringify(req.body)}`, { ...logData });
+    logData.page = 'Admin'
+    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.body)}`, { ...logData });
     let data = req.body;
     let { id, first_name, last_name, password, user } = data;
     try {
         let existingUser = await models.Users.findOne({ where: { user_id: id } }, { raw: true });
         // console.log('existingUser ', existingUser);
         if (existingUser) {
-            TIMELOGGER.warn(`data: Existing User ${existingUser}`, { ...logData });
+            TIMELOGGER.warn(`data: Existing User ${JSON.stringify(existingUser)}`, { ...logData });
             return res.status(500).send('User Already Exists with Same USER ID.')
         }
         let result = await models.Users.create({ user_id: id, password, first_name, last_name, updatedBy: user.id });
@@ -71,8 +80,10 @@ async function addUser(req, res, next) {
 
 async function updateUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+    logData.user = req.headers.user ? req.headers.user : undefined
     logData.method = 'updateUser';
-    TIMELOGGER.info(`params: ${JSON.stringify(req.body)}`, { ...logData });
+    logData.page = 'Admin'
+    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.body)}`, { ...logData });
     let data = req.body;
     let { id, password, is_admin, user } = data;
     let result;
@@ -117,8 +128,10 @@ async function updateUser(req, res, next) {
 
 async function toggleActiveUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+    logData.user = req.headers.user ? req.headers.user : undefined
     logData.method = 'toggleActiveUser';
-    TIMELOGGER.info(`params: ${JSON.stringify(req.body)}`, { ...logData });
+    logData.page = 'Admin'
+    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.body)}`, { ...logData });
     let data = req.body;
     let { is_active, user_id } = data;
     try {
@@ -139,8 +152,10 @@ async function toggleActiveUser(req, res, next) {
 
 async function toggleAdminUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+    logData.user = req.headers.user ? req.headers.user : undefined
     logData.method = 'toggleAdminUser';
-    TIMELOGGER.info(`params: ${JSON.stringify(req.body)}`, { ...logData });
+    logData.page = 'Admin'
+    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.body)}`, { ...logData });
     let data = req.body;
     let { is_admin, user_id } = data;
     try {
@@ -160,16 +175,19 @@ async function toggleAdminUser(req, res, next) {
 }
 
 function logout(req, res) {
-    let logData = {user: req.headers.user};
+    let logData = { user: req.headers.user };
+    logData.user = req.headers.user ? req.headers.user : undefined
     logData.method = 'logout';
-    TIMELOGGER.info(`comment: logOut`,{...logData});
+    TIMELOGGER.info(`comment: logOut`, { ...logData });
     UserLoginStatus[logData.user] = false;
     res.status(SUCCESS).send();
 }
 
 async function login(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+    logData.user = req.headers.user ? req.headers.user : undefined
     logData.method = 'login';
+    logData.page = 'Login';
     TIMELOGGER.info(`Entry: `, { ...logData });
     let { ERROR_MESSAGE: { PASSWORD_INCORRECT, USER_NOT_FOUND }, STATUS_CODES: { NOT_FOUND, UNAUTHORIZED, SERVER_ERROR } } = HTTP_UTIL;
     const { user_id, password } = req.body;

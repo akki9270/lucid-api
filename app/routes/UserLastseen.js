@@ -6,8 +6,12 @@ const TIMELOGGER = require('../winston').TIMELOGGER;
 // const jwt = require('jsonwebtoken');
 // const config = require('../config');
 
-async function getLastSeenPatients(req, res, next) {
-    let logData = { method: 'getLastSeenPatients' };
+async function getLastSeenPatients(req, res, next) {     
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.method = 'getLastSeenPatients';
+    logData.page = 'Patients';    
+
     let pathParams = req.params;
     let userId = '';
     let whereClause = {};
@@ -21,6 +25,8 @@ async function getLastSeenPatients(req, res, next) {
         }
     }
 
+    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
+
     try {
         let lastSeenPatients = await models.UserLastseen.findAll({
             where: { ...whereClause }
@@ -33,9 +39,11 @@ async function getLastSeenPatients(req, res, next) {
 }
 
 async function addPatientLastseenByUser(req, res, next) {
-    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
     logData.method = 'addPatientLastseenByUser';
-    TIMELOGGER.info(`params: ${JSON.stringify(req.body)}`, { ...logData });
+    logData.page = 'Patients';    
+    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.body)}`, { ...logData });
     let data = req.body;    
     let { last_Seen, user_id, intake_id, patient_id } = data;
     try {
@@ -51,7 +59,7 @@ async function addPatientLastseenByUser(req, res, next) {
                 last_seen: new Date()
             }, { where: { id: existingUser.id } });
 
-            TIMELOGGER.warn(`data: Existing User ${existingUser}`, { ...logData });
+            TIMELOGGER.warn(`data: Existing User ${JSON.stringify(existingUser)}`, { ...logData });
             return res.status(SUCCESS).send({message: 'User Already Exists with Same USER ID.'})
         }
         let result = await models.UserLastseen.create({ user_id, intake_id, patient_id, last_seen: last_Seen });

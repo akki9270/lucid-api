@@ -13,7 +13,7 @@ const myFormat = printf(info => {
 // console.log('log file path is ',config.LOG_FILE_PATH);
 
 var transport = new (winston.transports.DailyRotateFile)({
-    filename: `claim-service-%DATE%`,
+    filename: `lucid-%DATE%`,
     dirname:config.LOG_FILE_PATH,
     datePattern: 'YYYY-MM-DD', // default to Every day.
     zippedArchive: true,
@@ -22,11 +22,11 @@ var transport = new (winston.transports.DailyRotateFile)({
     // maxFiles: 3
     // frequency: '1m',
     // createSymlink: true,
-    // symlinkName: 'claim-service.log',
+    // symlinkName: 'lucid.log',
 });
 
 var transportError = new (winston.transports.DailyRotateFile)({
-    filename: 'claim-service-error-%DATE%',
+    filename: 'lucid-error-%DATE%',
     dirname:config.LOG_FILE_PATH,
     datePattern: 'YYYY-MM-DD', // default to Every day.
     zippedArchive: true,
@@ -35,7 +35,7 @@ var transportError = new (winston.transports.DailyRotateFile)({
     maxSize: '20m',
     // maxFiles: 3
     // createSymlink: true,
-    // symlinkName: 'claim-service-error.log',
+    // symlinkName: 'lucid-error.log',
 });
 
 transport.on('rotate', function(oldFilename, newFilename) {

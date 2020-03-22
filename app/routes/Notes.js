@@ -3,8 +3,12 @@ const Sequelize = require('sequelize');
 const { STATUS_CODES: { UNAUTHORIZED, SERVER_ERROR, SUCCESS } } = require('../http_util');
 const TIMELOGGER = require('../winston').TIMELOGGER;
 
-async function getNotes(req, res, next) {    
-    let logData = { method: 'getNotes' };
+async function getNotes(req, res, next) {        
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.method = 'getNotes';
+    logData.page = 'Patients --> F11 Notes';    
+    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
     let pathParams = req.params;
     let patientId = '';
     let intakeId = '';

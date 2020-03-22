@@ -4,7 +4,11 @@ const { STATUS_CODES: { UNAUTHORIZED, SERVER_ERROR, SUCCESS } } = require('../ht
 const TIMELOGGER = require('../winston').TIMELOGGER;
 
 async function getTimeline(req, res, next) {    
-    let logData = { method: 'getTimeline' };
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.method = 'getTimeline';
+    logData.page = 'Patients --> Timeline';    
+    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
     let pathParams = req.params;
     let patientId = '';
     let intakeId = '';
