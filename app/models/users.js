@@ -11,12 +11,26 @@ module.exports = function (Sequelize, Types) {
         password_salt: { type: Types.STRING },
         is_admin: { type: Types.BOOLEAN },
         is_active: { type: Types.BOOLEAN, defaultValue: true },
-        updatedBy: { type: Types.STRING }
+        updatedBy: { type: Types.STRING },
+        createdAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        updatedAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+        },
+        deletedAt: {
+            allowNull: true,
+            type: Types.DATE
+        }
     }, {
         tableName: 'Users',
         modelName: 'Users',
         // freezeTableName: true,
-        timestamps: true,
+        timestamps: false,
         paranoid: true,
         classMethods: {
             // eslint-disable-next-line

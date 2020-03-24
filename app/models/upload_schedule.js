@@ -1,9 +1,9 @@
 
 module.exports = function (Sequelize, Types) {
-    let Tag = Sequelize.define('Tag', {
-        tag_code: { type: Types.STRING, primaryKey: true },
-        tag_name: { type: Types.STRING },
-        tag_color: { type: Types.STRING },
+    let upload_schedule = Sequelize.define('upload_schedule', {
+        id: { type: Types.INTEGER, primaryKey: true, autoIncrement: true },
+        statu: { type: Types.TEXT },
+        code: { type: Types.STRING },
         createdAt: {
             allowNull: false,
             type: Types.DATE,
@@ -19,11 +19,14 @@ module.exports = function (Sequelize, Types) {
             type: Types.DATE
         }
     }, {
-        tableName: 'Tag',
-        modelName: 'Tag',
+        tableName: 'upload_schedule',
+        modelName: 'upload_schedule',
+        // to have table trigger for createdAt and updatedAt to work on raw queries
         timestamps: false,
-        paranoid: true
+
+        // Will Not work if timestamps is false
+        // paranoid: true
     });
 
-    return Tag;
+    return upload_schedule;
 }

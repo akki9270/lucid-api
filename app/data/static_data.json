@@ -2,6 +2,7 @@
     {
         "model": "Tag",
         "primaryKey": "tag_code",
+        "fields": ["tag_code","tag_name","tag_color"],
         "data": [
             {
                 "tag_code": "5e55f127fc13ae5b61000000",
@@ -58,6 +59,8 @@
     {
         "model": "Users",
         "primaryKey": "user_id",
+        "fields": ["user_id","first_name","last_name","password","password_hash","password_salt",
+                "is_admin","is_active","updatedBy"],
         "data": [
             {
                 "user_id": "system",
@@ -181,6 +184,11 @@
     {
         "model": "Patient",
         "primaryKey": "patient_id",
+        "fields": [
+            "patient_id","intake_id","first_name","last_name","dob","gender","phone_number",
+            "address","city","state","insurance_name","subscriber_id","last_seen","pediatric_patient","call_frequency","call_count","urgent","escalation",
+            "restaff_turnback","primary_care_physician","ordering_physician","wound_care","facility_discharge"
+          ],
         "data": [
             {
                 "patient_id": "6641737",
@@ -208,8 +216,6 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
                 "deletedAt": null              
             },
             {
@@ -238,8 +244,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -268,8 +273,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -298,8 +302,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -328,8 +331,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -358,8 +360,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -388,8 +389,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -418,8 +418,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -448,8 +447,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -478,8 +476,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -508,8 +505,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -538,8 +534,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -568,8 +563,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -598,8 +592,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -628,8 +621,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -658,8 +650,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -688,8 +679,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -718,8 +708,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -748,8 +737,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -778,8 +766,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -808,8 +795,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -838,8 +824,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -868,8 +853,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -898,8 +882,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -928,8 +911,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -958,8 +940,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -988,8 +969,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -1018,8 +998,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -1048,8 +1027,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -1078,8 +1056,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -1108,8 +1085,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -1138,8 +1114,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -1168,8 +1143,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             },
             {
@@ -1198,8 +1172,7 @@
                 "ordering_physician": 0,
                 "wound_care": 1,
                 "facility_discharge": 0,
-                "createdAt": "2005-05-28 10:35:23",
-                "updatedAt": "2005-05-28 10:35:23",
+                
                 "deletedAt": null
             }
         ]
@@ -1207,21 +1180,29 @@
     {
         "model": "UserLastseen",
         "primaryKey": "id",
+        "fields": ["id","last_seen", "user_id"],
         "data": [
             {
                 "id": 1,
                 "last_seen": "2020-01-28 10:35:23",
-                "user_id": "asia",
-                
-                "createdAt": "2028-05-05 10:35:00",
-                "updatedAt": "2028-05-05 10:35:00",
-                "deletedAt": null
+                "user_id": "asia"
             }
         ]
     },    
     {
         "model": "Service",
         "primaryKey": "id",
+        "fields": ["id","service_code","hcpc_code","start_date","end_date","units","description",
+            "primary_diagnosis","ref_source","primary_physician_first_name","primary_physician_last_name",
+            "primary_physician_address","primary_physician_city","primary_physician_state",
+            "primary_physician_zipcode","primary_physician_phone_number","primary_physician_fax",
+            "ordering_physician_first_name","ordering_physician_last_name","ordering_physician_address",
+            "ordering_physician_city","ordering_physician_state","ordering_physician_zipcode",
+            "ordering_physician_phone_number","ordering_physician_fax","service_provider_name",
+            "service_provider_address","service_provider_city","service_provider_state",
+            "service_provider_zipcode","service_provider_phone_number","service_provider_fax",
+            "service_provider_referral_type","service_provider_referral_method",
+            "patient_id","intake_id"],
         "data": [
             {
                 "id": 1,
@@ -2011,6 +1992,7 @@
     {
         "model": "Notes",
         "primaryKey": "note_id",
+        "fields": ["note_id","note_data","operation_center_code","date","parsed_flag","patient_id","intake_id"],
         "data": [
             {
                 "note_id": 1,

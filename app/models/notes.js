@@ -5,13 +5,27 @@ module.exports = function (Sequelize, Types) {
         operation_center_code: { type: Types.STRING },
         date: { type: Types.DATE },
         nex_review_date: { type: Types.DATE },
-        parsed_flag: { type: Types.TINYINT(0), defaultValue: 0 }
+        parsed_flag: { type: Types.TINYINT(0), defaultValue: 0 },
+        createdAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        updatedAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+        },
+        deletedAt: {
+            allowNull: true,
+            type: Types.DATE
+        }
         // reviewed: { type: Types.BOOLEAN }        
     }, {
         tableName: 'Notes',
         modelName: 'Notes',
         // freezeTableName: true,
-        timestamps: true,
+        timestamps: false,
         paranoid: true,
         classMethods: {
             // eslint-disable-next-line

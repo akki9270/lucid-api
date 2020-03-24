@@ -37,10 +37,24 @@ module.exports = function (Sequelize, Types) {
         service_provider_referral_method: { type: Types.STRING },
         // patient_id: { type: Types.STRING, references: { model: 'patient', key: 'patient_id' } },
         // intake_id: { type: Types.STRING, references: { model: 'patient', key: 'intake_id' }  }
+        createdAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        updatedAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+        },
+        deletedAt: {
+            allowNull: true,
+            type: Types.DATE
+        }
     }, {
         tableName: 'Service',
         modelName: 'Service',
-        timestamps: true,
+        timestamps: false,
         paranoid: true,
         // hooks: {
         //     // eslint-disable-next-line

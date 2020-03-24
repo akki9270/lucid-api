@@ -57,12 +57,15 @@ async function addPatientLastseenByUser(req, res, next) {
         if (existingUser) {
             models.UserLastseen.update({
                 last_seen: new Date()
-            }, { where: { id: existingUser.id } });
+            }, { where: { id: existingUser.id }, fields: ['last_seen'] });
 
             TIMELOGGER.warn(`data: Existing User ${JSON.stringify(existingUser)}`, { ...logData });
             return res.status(SUCCESS).send({message: 'User Already Exists with Same USER ID.'})
         }
-        let result = await models.UserLastseen.create({ user_id, intake_id, patient_id, last_seen: last_Seen });
+        let result = await models.UserLastseen.create({ user_id, intake_id, patient_id, last_seen: last_Seen },
+            {
+                fields: ['user_id', 'intake_id', 'patient_id', 'last_seen'] 
+            });
         res.status(SUCCESS).send(result);
     } catch (err) {
         TIMELOGGER.error(`Error: ${err.message}`, { ...logData });

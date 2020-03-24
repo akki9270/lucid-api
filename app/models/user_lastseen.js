@@ -4,12 +4,26 @@ module.exports = function (Sequelize, Types) {
         last_seen: { type: Types.DATE },
         user_id: { type: Types.STRING },
         patient_id: { type: Types.STRING },
-        intake_id: {type: Types.STRING }        
+        intake_id: {type: Types.STRING },
+        createdAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        updatedAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+        },
+        deletedAt: {
+            allowNull: true,
+            type: Types.DATE
+        }        
     }, {
         tableName: 'UserLastseen',
         modelName: 'UserLastseen',
-        timestamps: true,
-        paranoid: true
+        timestamps: false,
+        paranoid: true  
     });
 
     UserLastseen.associate = function (models) {       

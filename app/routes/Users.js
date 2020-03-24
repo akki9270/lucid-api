@@ -40,7 +40,7 @@ async function getUser(obj) {
     let logData = obj && obj.user_id ? { user: obj.user_id } : {};    
     logData.method = 'getUser';
     // logData.page = 'Admin';
-    TIMELOGGER.info(`Comment: Entry`, { ...logData });
+    // TIMELOGGER.info(`Comment: Entry`, { ...logData });
     try {
         return await models.Users.findOne({
             where: obj
@@ -65,7 +65,11 @@ async function addUser(req, res, next) {
             TIMELOGGER.warn(`data: Existing User ${JSON.stringify(existingUser)}`, { ...logData });
             return res.status(500).send('User Already Exists with Same USER ID.')
         }
-        let result = await models.Users.create({ user_id: id, password, first_name, last_name, updatedBy: user.id });
+        let result = await models.Users.create(
+            { user_id: id, password, first_name, last_name, updatedBy: user.id },
+            {
+                fields: ['user_id', 'password', 'first_name','last_name', 'password_hash', 'password_salt', 'updatedBy']
+            });
         // if (result) {
         res.status(SUCCESS).send(result);
         // } else {
@@ -105,11 +109,12 @@ async function updateUser(req, res, next) {
                 password_hash,
                 password_salt: salt,
                 updatedBy: user.id,
-                updatedAt: models.sequelize.literal('CURRENT_TIMESTAMP')
-            }, { where: { user_id: id } });
+                // updatedAt: models.sequelize.literal('CURRENT_TIMESTAMP')
+            }, { where: { user_id: id }, fields: ['password_hash', 'password_salt', 'updatedBy'] });
         } else {
             result = await models.Users.update({ name, is_admin, updatedBy: user.id }, {
-                where: { user_id: id }
+                where: { user_id: id },
+                fields: ['name', 'is_admin', 'updatedBy']
             });
         }
 
@@ -135,8 +140,9 @@ async function toggleActiveUser(req, res, next) {
     let data = req.body;
     let { is_active, user_id } = data;
     try {
-        let result = await models.Users.update({ is_active, updatedBy: user_id }, {
-            where: { user_id: user_id }
+        let result = await models.Users.update({ is_active, updatedBy: logData.user }, {
+            where: { user_id: user_id },
+            fields: ['is_active', 'updatedBy']
         });
         // if (result) {
         res.status(SUCCESS).send(result);
@@ -159,8 +165,9 @@ async function toggleAdminUser(req, res, next) {
     let data = req.body;
     let { is_admin, user_id } = data;
     try {
-        let result = await models.Users.update({ is_admin, updatedBy: user_id }, {
-            where: { user_id: user_id }
+        let result = await models.Users.update({ is_admin, updatedBy: logData.user }, {
+            where: { user_id: user_id },
+            fields: ['is_admin', 'updatedBy']
         });
         // if (result) {
         res.status(SUCCESS).send(result);

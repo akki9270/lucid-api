@@ -28,8 +28,22 @@ module.exports = function (Sequelize, Types) {
         ordering_physician: { type: Types.BOOLEAN },
         wound_care: { type: Types.BOOLEAN },
         facility_discharge: { type: Types.BOOLEAN },
-        patient_id: { type: Types.STRING, primaryKey: true },
-        intake_id: { type: Types.STRING, primaryKey: true }
+        // patient_id: { type: Types.STRING, primaryKey: true },
+        // intake_id: { type: Types.STRING, primaryKey: true }
+        createdAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        updatedAt: {
+            allowNull: false,
+            type: Types.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+        },
+        deletedAt: {
+            allowNull: true,
+            type: Types.DATE
+        }
     }, {
         tableName: 'Patient',
         modelName: 'Patient',
@@ -40,8 +54,8 @@ module.exports = function (Sequelize, Types) {
         //     }
         // ],
         // freezeTableName: true,
-        timestamps: true,
-        paranoid: true
+        timestamps: false,
+        paranoid: true,
     });
 
     Patient.associate = function(models) {       

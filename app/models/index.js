@@ -29,7 +29,7 @@ var SQL = config.SQL;
 
 // Sequlize instance
 var sequelize = new Sequelize(SQL.database, SQL.username, SQL.password, {
-  host: SQL.host, dialect: 'mysql', port: SQL.port,
+  host: SQL.host, dialect: SQL.dialect, port: SQL.port,
   logging: false
 })
 var db = {};
