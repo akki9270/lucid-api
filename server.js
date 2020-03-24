@@ -105,8 +105,8 @@ models.sequelize.sync().then(async function () {
                 data = await models[modelName].findOne({ 
                     where: {[item.primaryKey]: dataObj[item.primaryKey] },
                 });
-                if (!data) {
-                  await models[modelName].create({ ...dataObj });
+                if (!data) {                    
+                    await models[modelName].create({ ...dataObj },{ fields: item.fields });
                 }
             }
         } catch (err) {
