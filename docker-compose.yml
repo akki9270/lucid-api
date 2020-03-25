@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+    lucid:
+        restart: always
+        image: brilliantmd/lucid:${LUCID_VER}
+        container_name: lucid
+        ports:
+            - "8080:8080"
+        networks: 
+            - app-network
+
+        environment:
+            APP_PORT: ${LUCID_PORT}
+            DB_USERNAME: ${MYSQL_USER}
+            DB_PASSWORD: ${MYSQL_PASSWORD}
+            DB_NAME: ${DB_SCHEMA}
+            DB_HOST: ${DB_HOST}
+            DB_PORT: ${MYSQL_INT_PORT}
+            
+        command: "node server.js"
+
+        volumes:
+            - ${LOG_PATH}/lucid_logs:/home/usr/app/log
+
+
+# Names our volume
+volumes:
+    logs:
+    
+networks:
+    app-network:
+        driver: bridge            

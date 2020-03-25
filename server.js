@@ -96,7 +96,7 @@ models.sequelize.sync().then(async function () {
     for (let i = 0; i < static_data.length; i++) {
         try {
             let item = static_data[i];
-            modelName = item.model;
+            let modelName = item.model;
             // console.log('modelName ', modelName);
             TIMELOGGER.info(`modelName ${modelName}`, {});
             for (let j = 0; j < item.data.length; j++) {
