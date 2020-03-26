@@ -23,10 +23,10 @@ RUN npm install -g bower
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
 RUN pwd
 # Install bower packages
-COPY bower.json ./
-COPY .bowerrc ./
+#COPY bower.json ./
+#COPY .bowerrc ./
 
-RUN bower install ./
+#RUN bower install ./
 RUN npm install --production
 # If you are building your code for production
 # RUN npm ci --only=production
