@@ -19,8 +19,6 @@ ENV LOG_FOLDER /home/usr/app/log
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-RUN npm install -g bower
-RUN echo '{ "allow_root": true }' > /root/.bowerrc
 RUN pwd
 # Install bower packages
 #COPY bower.json ./
