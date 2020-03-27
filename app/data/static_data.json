@@ -2,6 +2,7 @@
     {
         "model": "Tag",
         "primaryKey": "tag_code",
+        "shouldUpdate": true,
         "fields": ["tag_code","tag_name","tag_color"],
         "data": [
             {
@@ -59,6 +60,7 @@
     {
         "model": "Users",
         "primaryKey": "user_id",
+        "shouldUpdate": true,
         "fields": ["user_id","first_name","last_name","password","password_hash","password_salt",
                 "is_admin","is_active","updatedBy"],
         "data": [
@@ -184,6 +186,7 @@
     {
         "model": "Patient",
         "primaryKey": "patient_id",
+        "shouldUpdate": false,
         "fields": [
             "patient_id","intake_id","first_name","last_name","dob","gender","phone_number",
             "address","city","state","insurance_name","subscriber_id","last_seen","pediatric_patient","call_frequency","call_count","urgent","escalation",
@@ -1180,6 +1183,7 @@
     {
         "model": "UserLastseen",
         "primaryKey": "id",
+        "shouldUpdate": false,
         "fields": ["id","last_seen", "user_id"],
         "data": [
             {
@@ -1192,6 +1196,7 @@
     {
         "model": "Service",
         "primaryKey": "id",
+        "shouldUpdate": false,
         "fields": ["id","service_code","hcpc_code","start_date","end_date","units","description",
             "primary_diagnosis","ref_source","primary_physician_first_name","primary_physician_last_name",
             "primary_physician_address","primary_physician_city","primary_physician_state",
@@ -1992,6 +1997,7 @@
     {
         "model": "Notes",
         "primaryKey": "note_id",
+        "shouldUpdate": false,
         "fields": ["note_id","note_data","operation_center_code","date","parsed_flag","patient_id","intake_id"],
         "data": [
             {

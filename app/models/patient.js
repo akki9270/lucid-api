@@ -19,7 +19,9 @@ module.exports = function (Sequelize, Types) {
         subscriber_id: { type: Types.STRING },
         last_seen: { type: Types.DATE },
         pediatric_patient: { type: Types.BOOLEAN },
-        call_frequency: { type: Types.ENUM('DAY', 'WEEK', 'MONTH', 'YEAR') },
+        call_frequency: { 
+            allowNull:true,
+            type: Types.ENUM('DAY', 'WEEK', 'MONTH', 'YEAR') },
         call_count: { type: Types.INTEGER },
         urgent: { type: Types.BOOLEAN },
         escalation: { type: Types.BOOLEAN },

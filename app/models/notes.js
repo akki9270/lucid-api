@@ -1,10 +1,10 @@
 module.exports = function (Sequelize, Types) {
     let Notes = Sequelize.define('Notes', {
-        note_id: { type: Types.STRING, primaryKey: true },
+        note_id: { type: Types.INTEGER, primaryKey: true, autoIncrement: true },
         note_data: { type: Types.TEXT },
         operation_center_code: { type: Types.STRING },
         date: { type: Types.DATE },
-        nex_review_date: { type: Types.DATE },
+        next_review_date: { type: Types.DATE },
         parsed_flag: { type: Types.TINYINT(0), defaultValue: 0 },
         createdAt: {
             allowNull: false,

@@ -99,7 +99,7 @@ models.sequelize.sync().then(async function () {
             let modelName = item.model;
             // console.log('modelName ', modelName);
             TIMELOGGER.info(`modelName ${modelName}`, {});
-            for (let j = 0; j < item.data.length; j++) {
+            for (let j = 0; j < item.data.length && item.shouldUpdate; j++) {
                 let data = null;
                 let dataObj = item.data[j];
                 data = await models[modelName].findOne({ 

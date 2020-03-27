@@ -2,7 +2,7 @@
 module.exports = function (Sequelize, Types) {
     let upload_schedule = Sequelize.define('upload_schedule', {
         id: { type: Types.INTEGER, primaryKey: true, autoIncrement: true },
-        statu: { type: Types.TEXT },
+        status: { type: Types.TEXT },
         code: { type: Types.STRING },
         createdAt: {
             allowNull: false,
