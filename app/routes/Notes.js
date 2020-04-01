@@ -1,8 +1,9 @@
 const models = require('../models');
 const Sequelize = require('sequelize');
-const { STATUS_CODES: { UNAUTHORIZED, SERVER_ERROR, SUCCESS } } = require('../http_util');
+const { STATUS_CODES: { SERVER_ERROR, SUCCESS } } = require('../http_util');
 const TIMELOGGER = require('../winston').TIMELOGGER;
 
+// eslint-disable-next-line
 async function getNotes(req, res, next) {        
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
     logData.user = req.headers.user ? req.headers.user : undefined
@@ -35,7 +36,7 @@ async function getNotes(req, res, next) {
         let notes = await models.Notes.findAll({ where: whereClause });
         return res.status(SUCCESS).send(notes);
     } catch (error) {
-        TIMELOGGER.info(`getNotes Err:  ${error.message}`, ...logData)
+        TIMELOGGER.error(`getNotes Err:  ${error.message}`, ...logData)
         return res.status(SERVER_ERROR).send();
     }
 }

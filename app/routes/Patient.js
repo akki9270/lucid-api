@@ -1,8 +1,9 @@
 const models = require('../models');
 const Sequelize = require('sequelize');
-const { STATUS_CODES: { UNAUTHORIZED, SERVER_ERROR, SUCCESS } } = require('../http_util');
+const { STATUS_CODES: { SERVER_ERROR, SUCCESS } } = require('../http_util');
 const TIMELOGGER = require('../winston').TIMELOGGER;
 
+// eslint-disable-next-line
 async function getFilterPatientData(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
     logData.user = req.headers.user ? req.headers.user : undefined
@@ -10,6 +11,7 @@ async function getFilterPatientData(req, res, next) {
     logData.method = 'getFilterPatientData';    
     TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });    
     let params;
+    let whereClauseStr;
     try {
         params = req.params;
         whereClauseStr = '';
@@ -33,6 +35,7 @@ async function getFilterPatientData(req, res, next) {
     }
 }
 
+// eslint-disable-next-line
 async function getPatients(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
     logData.user = req.headers.user ? req.headers.user : undefined
@@ -135,16 +138,18 @@ async function getPatients(req, res, next) {
         }
         return res.status(SUCCESS).send(resultPatients);
     } catch (error) {
-        TIMELOGGER.info(`getPatients Err:  ${error.message}`, ...logData)
+        TIMELOGGER.error(`getPatients Err:  ${error.message}`, ...logData)
         return res.status(SERVER_ERROR).send();
     }
 }
 
+// eslint-disable-next-line
 async function getSortedPatientData(req, res, next) {    
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
     logData.user = req.headers.user ? req.headers.user : undefined
     logData.method = 'getSortedPatientData';
     logData.page = 'Patients';    
+    let params;
     // TIMELOGGER.info(`Comment: Entry`, {...logData});
     try {
         params = req.params;
@@ -168,27 +173,118 @@ async function getSortedPatientData(req, res, next) {
         TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
         return res.status(SUCCESS).send(patients);
     } catch (error) {
-        TIMELOGGER.info(`getSortedPatientData Err:  ${error.message}`, ...logData)
+        TIMELOGGER.error(`getSortedPatientData Err:  ${error.message}`, ...logData)
         return res.status(SERVER_ERROR).send();
     }
 }
 
+// eslint-disable-next-line
 async function getPatientsAnalytics(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
     logData.user = req.headers.user ? req.headers.user : undefined
     logData.method = 'getPatientsAnalytics';
-    logData.page = 'Patients';    
+    logData.page = 'Analytics';    
+    let params;
+    // let result;
     TIMELOGGER.info(`Comment: Entry`, {...logData});
     try {
         params = req.params;    
+        let { from, to} = params;
         // Need to code
+        let fromDate = new Date(from).getFullYear() + '-' + (new Date(from).getMonth() + 1) + '-' + new Date(from).getDate();
+        let toDate = new Date(to).getFullYear() + '-' + (new Date(to).getMonth() + 1) + '-' + new Date(to).getDate();
+        
+        // eslint-disable-next-line
+         let [results, metadata] = await models.sequelize.query(`
+            SELECT SUM(urgent = 1) as urgent,
+            SUM(escalation = 1) as escalation,
+            SUM(facility_discharge = 1) as facility_discharge
+            FROM Patient WHERE last_seen >= '${fromDate}' AND 
+            last_seen <= '${toDate}'
+         `);
+        //  console.log('result ', results);
         TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
-        return res.status(SUCCESS).send();
+        return res.status(SUCCESS).send(results);
     } catch (error) {
-        TIMELOGGER.info(`getPatientsAnalytics Err:  ${error.message}`, ...logData)
+        TIMELOGGER.error(`getPatientsAnalytics Err:  ${error.message}`, ...logData)
         return res.status(SERVER_ERROR).send();
     }
 }
 
+// eslint-disable-next-line
+async function getPatientCallCount(req,  res, next) {
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.method = 'getPatientCallCount';
+    logData.page = 'Analytics';    
+    let params;
+    // let result;
+    TIMELOGGER.info(`Comment: Entry`, {...logData});
+    try {
+        params = req.params;    
+        let { from, to} = params;
+        // Need to code
+        let fromDate = new Date(from).getFullYear() + '-' + (new Date(from).getMonth() + 1) + '-' + new Date(from).getDate();
+        let toDate = new Date(to).getFullYear() + '-' + (new Date(to).getMonth() + 1) + '-' + new Date(to).getDate();
 
-module.exports = { getPatients, getFilterPatientData, getSortedPatientData, getPatientsAnalytics }
+        // eslint-disable-next-line
+        let [results, metadata] = await models.sequelize.query(`
+            SELECT 
+            call_count, COUNT(*) as total
+            FROM
+                Patient
+            WHERE
+                last_seen >= '${fromDate}'
+                    AND last_seen <= '${toDate}'
+            GROUP BY call_count
+        `);
+        console.log('result ', results);
+        TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
+        return res.status(SUCCESS).send(results);
+    } catch(error) {
+        TIMELOGGER.error(`getPatientCallCount Err:  ${error.message}`, ...logData)
+        return res.status(SERVER_ERROR).send();
+    }
+}
+
+// eslint-disable-next-line
+async function getPatientMSOC(req, res, next) {
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.method = 'getPatientMSOC';
+    logData.page = 'Analytics';    
+    let params;
+    // let result;
+    TIMELOGGER.info(`Comment: Entry`, {...logData});
+    try {
+        params = req.params;
+        let { entered } = params;
+        // console.log('entered ', entered);
+        // Need to code
+        let enteredDate = new Date(entered).getFullYear() + '-' + (new Date(entered).getMonth() + 1) + '-' + new Date(entered).getDate();
+        // console.log('enteredDate ', enteredDate);
+        // eslint-disable-next-line
+        let [results, metadata] = await models.sequelize.query(`
+            SELECT 
+                count(*) as count
+            FROM
+                Service
+            WHERE
+            DATEDIFF(DATE(start_date), '${enteredDate}') > 0
+            AND DATEDIFF(DATE(start_date), '${enteredDate}') <= 10;
+        `);
+        // console.log('result ', results);
+        TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
+        return res.status(SUCCESS).send(results);
+    } catch (error) {
+        TIMELOGGER.error(`getPatientMsoc Err:  ${error.message}`, ...logData)
+        return res.status(SERVER_ERROR).send();
+    }
+}
+
+module.exports = { getPatients,
+     getFilterPatientData,
+     getSortedPatientData,
+     getPatientsAnalytics,
+     getPatientCallCount,
+     getPatientMSOC }

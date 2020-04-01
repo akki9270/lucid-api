@@ -1,12 +1,13 @@
 const models = require('../models');
-const Sequelize = require('sequelize');
-const { STATUS_CODES: { UNAUTHORIZED, SERVER_ERROR, SUCCESS } } = require('../http_util');
+// const Sequelize = require('sequelize');
+const { STATUS_CODES: { SERVER_ERROR, SUCCESS } } = require('../http_util');
 const HTTP_UTIL = require('../http_util');
 const TIMELOGGER = require('../winston').TIMELOGGER;
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 const UserLoginStatus = {};
 
+// eslint-disable-next-line
 async function getUsers(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.user = req.headers.user ? req.headers.user : undefined
@@ -31,7 +32,7 @@ async function getUsers(req, res, next) {
         });
         return res.status(SUCCESS).send(users);
     } catch (error) {
-        TIMELOGGER.info(`getUsers Err:  ${error.message}`, ...logData)
+        TIMELOGGER.error(`getUsers Err:  ${error.message}`, ...logData)
         return res.status(SERVER_ERROR).send();
     }
 }
@@ -50,6 +51,7 @@ async function getUser(obj) {
     }
 }
 
+// eslint-disable-next-line
 async function addUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.user = req.headers.user ? req.headers.user : undefined
@@ -82,6 +84,7 @@ async function addUser(req, res, next) {
     }
 }
 
+// eslint-disable-next-line
 async function updateUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.user = req.headers.user ? req.headers.user : undefined
@@ -131,6 +134,7 @@ async function updateUser(req, res, next) {
     }
 }
 
+// eslint-disable-next-line
 async function toggleActiveUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.user = req.headers.user ? req.headers.user : undefined
@@ -156,6 +160,7 @@ async function toggleActiveUser(req, res, next) {
     }
 }
 
+// eslint-disable-next-line
 async function toggleAdminUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.user = req.headers.user ? req.headers.user : undefined
@@ -190,6 +195,7 @@ function logout(req, res) {
     res.status(SUCCESS).send();
 }
 
+// eslint-disable-next-line
 async function login(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};
     logData.user = req.headers.user ? req.headers.user : undefined

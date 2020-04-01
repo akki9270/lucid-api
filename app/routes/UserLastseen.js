@@ -1,43 +1,45 @@
 const models = require('../models');
-const Sequelize = require('sequelize');
-const { STATUS_CODES: { UNAUTHORIZED, SERVER_ERROR, SUCCESS } } = require('../http_util');
+// const Sequelize = require('sequelize');
+const { STATUS_CODES: { SERVER_ERROR, SUCCESS } } = require('../http_util');
 // const HTTP_UTIL = require('../http_util');
 const TIMELOGGER = require('../winston').TIMELOGGER;
 // const jwt = require('jsonwebtoken');
 // const config = require('../config');
 
-async function getLastSeenPatients(req, res, next) {     
-    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
-    logData.user = req.headers.user ? req.headers.user : undefined
-    logData.method = 'getLastSeenPatients';
-    logData.page = 'Patients';    
+// eslint-disable-next-line
+// async function getLastSeenPatients(req, res, next) {     
+//     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+//     logData.user = req.headers.user ? req.headers.user : undefined
+//     logData.method = 'getLastSeenPatients';
+//     logData.page = 'Patients';    
 
-    let pathParams = req.params;
-    let userId = '';
-    let whereClause = {};
-    if (pathParams && pathParams.userId) {
-        userId = pathParams.userId;
-    }
-    if (patientId) {
-        whereClause = {
-            ...whereClause,
-            user_id: { [Sequelize.Op.eq]: userId }
-        }
-    }
+//     let pathParams = req.params;
+//     let userId = '';
+//     let whereClause = {};
+//     if (pathParams && pathParams.userId) {
+//         userId = pathParams.userId;
+//     }
+//     if (patientId) {
+//         whereClause = {
+//             ...whereClause,
+//             user_id: { [Sequelize.Op.eq]: userId }
+//         }
+//     }
 
-    TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
+//     TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
 
-    try {
-        let lastSeenPatients = await models.UserLastseen.findAll({
-            where: { ...whereClause }
-        });
-        return res.status(SUCCESS).send(lastSeenPatients);
-    } catch (error) {
-        TIMELOGGER.info(`getLastSeenPatients Err:  ${error.message}`, ...logData)
-        return res.status(SERVER_ERROR).send();
-    }
-}
+//     try {
+//         let lastSeenPatients = await models.UserLastseen.findAll({
+//             where: { ...whereClause }
+//         });
+//         return res.status(SUCCESS).send(lastSeenPatients);
+//     } catch (error) {
+//         TIMELOGGER.error(`getLastSeenPatients Err:  ${error.message}`, ...logData)
+//         return res.status(SERVER_ERROR).send();
+//     }
+// }
 
+// eslint-disable-next-line
 async function addPatientLastseenByUser(req, res, next) {
     let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
     logData.user = req.headers.user ? req.headers.user : undefined
@@ -74,4 +76,4 @@ async function addPatientLastseenByUser(req, res, next) {
 }
 
 
-module.exports = { getLastSeenPatients, addPatientLastseenByUser }
+module.exports = { addPatientLastseenByUser }
