@@ -112,9 +112,9 @@ async function updateUser(req, res, next) {
                 // updatedAt: models.sequelize.literal('CURRENT_TIMESTAMP')
             }, { where: { user_id: id }, fields: ['password_hash', 'password_salt', 'updatedBy'] });
         } else {
-            result = await models.Users.update({ name, is_admin, updatedBy: user.id }, {
+            result = await models.Users.update({ first_name: data.first_name, last_name: data.last_name, is_admin, updatedBy: user.id }, {
                 where: { user_id: id },
-                fields: ['name', 'is_admin', 'updatedBy']
+                fields: ['first_name', 'last_name', 'is_admin', 'updatedBy']
             });
         }
 

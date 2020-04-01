@@ -66,6 +66,7 @@ module.exports = function (app) {
     app.get('/api/getNotes/:patientId/:intakeId', passport.authenticate('jwt', {session: false}), checkValidity, Notes.getNotes);
     app.get('/api/getLastSeenPatients/:userId/:rowId', passport.authenticate('jwt', {session: false}), checkValidity, UserLastseen.getLastSeenPatients);
     app.post('/api/addPatientLastseen', passport.authenticate('jwt', {session: false}), checkValidity, UserLastseen.addPatientLastseenByUser);
+    app.get('/api/getPatientsAnalyticsData', passport.authenticate('jwt', {session: false}), checkValidity, Patients.getPatientsAnalytics);
   
     app.get('*', function (req, res) {
         res.sendFile(path.resolve() + '/public/index.html')

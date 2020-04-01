@@ -24,7 +24,7 @@ const { TIMELOGGER } = require('./app/winston');
 // var db = require('./config/db');
 
 // set our port
-var port = process.env.APP_PORT || 8080;
+var port = process.env.APP_PORT || 8081;
 
 app.use(passport.initialize());
 app.use(helmet());
@@ -87,7 +87,7 @@ app.use(express.static(__dirname + (config.isProd ? '/public/dist' : '/public'))
 require('./app/routes')(app); // configure our routes
 
 // Sync sequelize
-models.sequelize.sync().then(async function () {
+models.sequelize.sync({ force: true }).then(async function () {
     // start app ===============================================
     // startup our app at http://localhost:8080
 
@@ -99,7 +99,7 @@ models.sequelize.sync().then(async function () {
             let modelName = item.model;
             // console.log('modelName ', modelName);
             TIMELOGGER.info(`modelName ${modelName}`, {});
-            for (let j = 0; j < item.data.length && item.shouldUpdate; j++) {
+            for (let j = 0; j < item.data.length; j++) {
                 let data = null;
                 let dataObj = item.data[j];
                 data = await models[modelName].findOne({ 

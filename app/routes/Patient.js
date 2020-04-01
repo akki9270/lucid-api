@@ -173,5 +173,22 @@ async function getSortedPatientData(req, res, next) {
     }
 }
 
+async function getPatientsAnalytics(req, res, next) {
+    let logData = req.headers.log_data ? JSON.parse(req.headers.log_data) : {};    
+    logData.user = req.headers.user ? req.headers.user : undefined
+    logData.method = 'getPatientsAnalytics';
+    logData.page = 'Patients';    
+    TIMELOGGER.info(`Comment: Entry`, {...logData});
+    try {
+        params = req.params;    
+        // Need to code
+        TIMELOGGER.info(`Comment: Entry, params: ${JSON.stringify(req.params)}`, { ...logData });
+        return res.status(SUCCESS).send();
+    } catch (error) {
+        TIMELOGGER.info(`getPatientsAnalytics Err:  ${error.message}`, ...logData)
+        return res.status(SERVER_ERROR).send();
+    }
+}
 
-module.exports = { getPatients, getFilterPatientData, getSortedPatientData }
+
+module.exports = { getPatients, getFilterPatientData, getSortedPatientData, getPatientsAnalytics }
