@@ -19,9 +19,8 @@ require('./passport'); // Include Own passport strategy..
 
 //require('./passport'); // Include Own passport strategy.. 
 var checkValidity = function(req, res, next) {
-return    next();
-    // eslint-disable-next-line
     if (req.path.indexOf('login') > -1 || req.path.indexOf('logout') > -1) {
+        next();
     } else {
         let user = req.headers.user;
         let isValidToken = Users.UserLoginStatus[user];
