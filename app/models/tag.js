@@ -3,6 +3,7 @@ module.exports = function (Sequelize, Types) {
     let Tag = Sequelize.define('Tag', {
         tag_code: { type: Types.STRING, primaryKey: true },
         tag_name: { type: Types.STRING },
+        associate_tag: { type: Types.STRING },
         tag_color: { type: Types.STRING },
         createdAt: {
             allowNull: false,
