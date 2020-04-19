@@ -3,57 +3,396 @@
         "model": "Tag",
         "primaryKey": "tag_code",
         "shouldUpdate": true,
-        "fields": ["tag_code","tag_name","tag_color"],
+        "fields": [
+            "tag_code",
+            "tag_name",
+            "associate_tag",
+            "tag_color"
+        ],
         "data": [
             {
-                "tag_code": "5e55f127fc13ae5b61000000",
-                "tag_name": "Online",
+                "tag_code": "5e55f127fc13ae5b610000000",
+                "tag_name": "ASOC",
+                "associate_tag": "ASOC",
+                "tag_color": "#ff8000"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b610000001",
+                "tag_name": "CEO",
+                "associate_tag": "CEO",
                 "tag_color": "#6b6b47"
             },
             {
-                "tag_code": "5e55f127fc13ae5b61000001",
-                "tag_name": "FIRST CARE",
-                "tag_color": "#006bb3"
-            },
-            {
-                "tag_code": "5e55f127fc13ae5b61000002",
-                "tag_name": "PHARMACY ONLY",
-                "tag_color": "#ff0000"
+                "tag_code": "5e55f127fc13ae5b610000002",
+                "tag_name": "CEO",
+                "associate_tag": "President",
+                "tag_color": "#6b6b47"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000003",
-                "tag_name": "Ibuprofen",
+                "tag_name": "Clinical",
+                "associate_tag": "Approval",
                 "tag_color": "#3333ff"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000004",
-                "tag_name": "Working on staffing",
-                "tag_color": "#006080"
+                "tag_name": "Clinical",
+                "associate_tag": "Approved",
+                "tag_color": "#3333ff"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000005",
-                "tag_name": "Epsom Salt",
-                "tag_color": "#990066"
+                "tag_name": "Clinical",
+                "associate_tag": "Denial",
+                "tag_color": "#3333ff"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000006",
-                "tag_name": "Quinapril",
-                "tag_color": "#e60000"
+                "tag_name": "Clinical",
+                "associate_tag": "Denied",
+                "tag_color": "#3333ff"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000007",
-                "tag_name": "PT was requesting",
-                "tag_color": "#666600"
+                "tag_name": "Clinical",
+                "associate_tag": "Deny",
+                "tag_color": "#3333ff"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000008",
-                "tag_name": "Oxygen",
-                "tag_color": "#cc3300"
+                "tag_name": "Clinical",
+                "associate_tag": "Overturned",
+                "tag_color": "#3333ff"
             },
             {
                 "tag_code": "5e55f127fc13ae5b610000009",
-                "tag_name": "Lemon Zest Antibacterial Foaming Hand Wash",
+                "tag_name": "Clinical",
+                "associate_tag": "P2P",
+                "tag_color": "#3333ff"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000010",
+                "tag_name": "Clinical",
+                "associate_tag": "Peer to Peer",
+                "tag_color": "#3333ff"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000011",
+                "tag_name": "Facility Discharge",
+                "associate_tag": "Discharge Delay",
+                "tag_color": "#ff0000"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000012",
+                "tag_name": "Facility Discharge",
+                "associate_tag": "Discharge Pending",
+                "tag_color": "#ff0000"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000013",
+                "tag_name": "Facility Discharge",
+                "associate_tag": "Facility Discharge",
+                "tag_color": "#ff0000"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000014",
+                "tag_name": "Facility Discharge",
+                "associate_tag": "Readmission",
+                "tag_color": "#ff0000"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000015",
+                "tag_name": "Facility Discharge",
+                "associate_tag": "Readmitted",
+                "tag_color": "#ff0000"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000016",
+                "tag_name": "Legal",
+                "associate_tag": "Fraud",
+                "tag_color": "#145214"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000017",
+                "tag_name": "Legal",
+                "associate_tag": "Lawyer",
+                "tag_color": "#145214"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000018",
+                "tag_name": "Legal",
+                "associate_tag": "Legal",
+                "tag_color": "#145214"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000019",
+                "tag_name": "MSOC",
+                "associate_tag": "APOC",
+                "tag_color": "#990066"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000020",
+                "tag_name": "MSOC",
+                "associate_tag": "Inability to Staff",
+                "tag_color": "#990066"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000021",
+                "tag_name": "MSOC",
+                "associate_tag": "No Admit",
+                "tag_color": "#990066"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000022",
+                "tag_name": "MSOC",
+                "associate_tag": "PSOC",
+                "tag_color": "#990066"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000023",
+                "tag_name": "MSOC",
+                "associate_tag": "MSOC",
+                "tag_color": "#990066"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000024",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Aggravated",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000025",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Angry",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000026",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Annoyed",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000027",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Careless",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000028",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Frustrated",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000029",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Furious",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000030",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Inefficient",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000031",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Irritated",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000032",
+                "tag_name": "Patient Expression",
+                "associate_tag": "No Show",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000033",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Offensive",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000034",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Rude",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000035",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Sloppy",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000036",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Unpleasent",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000037",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Unprofessional",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000038",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Unskilled",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000039",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Upset",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000040",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Called Multiple Times",
+                "tag_color": "#009999"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000041",
+                "tag_name": "Regulatory",
+                "associate_tag": "Better Business Bureau",
+                "tag_color": "#009933"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000042",
+                "tag_name": "Regulatory",
+                "associate_tag": "DOBI",
+                "tag_color": "#009933"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000043",
+                "tag_name": "Regulatory",
+                "associate_tag": "DOI",
+                "tag_color": "#009933"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000044",
+                "tag_name": "Social Media",
+                "associate_tag": "Hard to Staff",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000045",
+                "tag_name": "Social Media",
+                "associate_tag": "Letter of Agreement",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000046",
+                "tag_name": "Social Media",
+                "associate_tag": "LOA",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000047",
+                "tag_name": "Social Media",
+                "associate_tag": "Rate Approval",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000048",
+                "tag_name": "Social Media",
+                "associate_tag": "Scrub Note",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000049",
+                "tag_name": "Social Media",
+                "associate_tag": "Staffing Note",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000050",
+                "tag_name": "Social Media",
+                "associate_tag": "HTS",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000051",
+                "tag_name": "Staffing Attempt",
+                "associate_tag": "Accepted",
+                "tag_color": "#cc3300"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000052",
+                "tag_name": "Staffing Attempt",
+                "associate_tag": "Decline",
+                "tag_color": "#cc3300"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000053",
+                "tag_name": "Staffing Attempt",
+                "associate_tag": "Declined",
+                "tag_color": "#cc3300"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000054",
+                "tag_name": "Verification",
+                "associate_tag": "Benefit Exclusion",
                 "tag_color": "#336600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000055",
+                "tag_name": "Verification",
+                "associate_tag": "Benefit Max",
+                "tag_color": "#336600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000056",
+                "tag_name": "Verification",
+                "associate_tag": "Elevated",
+                "tag_color": "#336600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000057",
+                "tag_name": "Verification",
+                "associate_tag": "Ineligible",
+                "tag_color": "#336600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000058",
+                "tag_name": "Verification",
+                "associate_tag": "Non-Covered",
+                "tag_color": "#336600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000059",
+                "tag_name": "Verification",
+                "associate_tag": "Termed Coverage",
+                "tag_color": "#336600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000060",
+                "tag_name": "Network",
+                "associate_tag": "Contract Management",
+                "tag_color": "#006bb3"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000061",
+                "tag_name": "Network",
+                "associate_tag": "Credentialing",
+                "tag_color": "#006bb3"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000062",
+                "tag_name": "Network",
+                "associate_tag": "Network Management",
+                "tag_color": "#006bb3"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000063",
+                "tag_name": "Network",
+                "associate_tag": "Turn Back",
+                "tag_color": "#006bb3"
             }
         ]
     },
@@ -2695,7 +3034,7 @@
             },
             {
                 "note_id": 78,
-                "note_data": "\n\n05/03/2018 02:29 PM CDT - DOCTORS CHOICE HOME HEALTH\n\nA Provider Referral was requested by DOCTORS CHOICE HOME HEALTH/Phone 3389672709/Fax (242)563-2446 via the provider portal on 05/03/2018 at 02:29 PM CDT. The following information was submitted in this portal referral request:\n\n\nPatient Information\nPatient Last Name: Bilotta\nPatient First Name: Demetra\nPatient DOB: 06/06/1925\nPatient Gender: F\nPatient Address: 4204 GARDEDALE SUITE 105\nPatient City: CALAIS\nPatient State: MI\nPatient Zip Code: 88623-7806\nPatient Ref Method: Online - Provider Portal\nPatient Phone Number: (980)219-5190\nInsurance Name: Horizon BCBS NJ - BLUE CARD MEMBERS\nSubscriber Id: P7A51VPRLO\nCare Giver Name : \nCare Giver Phone : \nReferral Known Allergies : \nReferral Relation To Patient : \nReferral Insurance Phone Number : \nReferral Group Number : \nReferral Employer : \nReferral Patient Referral Method : Online - Provider Portal\nReferral Payer Auth Number : \nReferral Payer Auth Start Date : \nReferral Payer Auth End Date : \nReferral Medical Group : \nReferral Home Plan : \nReferral Home Plan Phone No : \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \n\n\nFacility Information\nFacility Legal Name: \nFacility Address: \nZip Code: \nCity: \nState: \nFacility Admit Date: \nFacility Discharge Date: \nFacility DBA Name: \n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nReferral Source Information\nReferral Source: Patient's Primary Care Physician\nReferral Contact First Name: \nReferral Contact Last Name: \nReferral Phone: \nReferral Fax: \nNotes: \n\n\n\nHCPC A7034/SERVICE CODE 2516/CPAP MASK - 1/ PUR, FROM 03/14/2018 TO 04/12/2018\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\n\n\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\nWas the service or item for which you are now requesting authorization initiated prior to submitting this request for authorization?: Yes\nWas the service or item for which you are now requesting authorization completed prior to submitting this request for authorization?: No\nIs there a physician's order for the service you are requesting?: No\n\n\n\n\nHCPC A4232/SERVICE CODE 8013/SYRINGE WITH NEEDLE FOR EXTINSULIN PUMP, STERILE, 3CC - PUR,NU-KX FROM 03/10/2018 TO 05/10/2018\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\n\n\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\nWas the service or item for which you are now requesting authorization initiated prior to submitting this request for authorization?: No\nWas the service or item for which you are now requesting authorization completed prior to submitting this request for authorization?: Yes\nIs there a physician's order for the service you are requesting?: Yes\n\n\n\n\nHCPC E0730/SERVICE CODE 2218/TENS, FOUR LEAD, LARGER AREA/MULTIPLE NERVE STIMULATION - 1/ PUR,NU FROM 11/19/2017 TO 12/18/2017\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\n\n\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\nWas the service or item for which you are now requesting authorization initiated prior to submitting this request for authorization?: No\nWas the service or item for which you are now requesting authorization completed prior to submitting this request for authorization?: No\nIs there a physician's order for the service you are requesting?: Yes\n\n\n\n\n\n\n\n\nTHE ABOVE PROVIDER PORTAL REQUEST IS BEING PROCESSED TO DETERMINE NEXT STEPS \n\n05/03/2018 02:29 PM CDT\n\n\n\nHCPC A7034/SERVICE CODE 2516/CPAP MASK - 1/ PUR, FROM 03/14/2018 TO 04/12/2018\nTHE ABOVE PROVIDER PORTAL REFERRAL REQUEST WAS ROUTED TO THE HIT QUEUE WITH A ROUTE REASON OF Portal - Clin Rev BECAUSE OF THE FOLLOWING RULE FAILURES: \n\nCLINICAL REVIEW REQUIRED: CARECENTRIX IS DELEGATED FOR UM BY THE HEALTH PLAN FOR THIS SERVICE AND THIS SERVICE REQUIRES A MEDICAL NECESSITY REVIEW.  IF NOT MEDICALLY NECESSARY, SEND FOR PHYSICIAN REVIEW.\n\n\n\n\n\n\n\nHCPC A4232/SERVICE CODE 8013/SYRINGE WITH NEEDLE FOR EXTINSULIN PUMP, STERILE, 3CC - PUR,NU-KX FROM 03/10/2018 TO 05/10/2018\n\n\n\n\n\n\n\nHCPC E0730/SERVICE CODE 2218/TENS, FOUR LEAD, LARGER AREA/MULTIPLE NERVE STIMULATION - 1/ PUR,NU FROM 11/19/2017 TO 12/18/2017\nTHE ABOVE PROVIDER PORTAL REFERRAL REQUEST WAS ROUTED TO THE HIT QUEUE WITH A ROUTE REASON OF Portal - Clin Rev BECAUSE OF THE FOLLOWING RULE FAILURES: \n\nCLINICAL REVIEW REQUIRED: CARECENTRIX IS DELEGATED FOR UM BY THE HEALTH PLAN FOR THIS SERVICE AND THIS SERVICE REQUIRES A MEDICAL NECESSITY REVIEW.  IF NOT MEDICALLY NECESSARY, SEND FOR PHYSICIAN REVIEW.\n\n\n\n\n\n\n\n\n\nIntake ID: 7828102\nPrioritized By: \nPrioritization Type: \nPrioritization Reason: \nEmail Distribution: ",
+                "note_data": "\n\n05/03/2018 02:29 PM CDT - NETWORK Turn Back Careless DOCTORS CHOICE Deny Angry HOME HEALTH\n\nA Provider Referral was requested by DOCTORS FRUSTRATED CHOICE HOME HEALTH/Phone 3389672709/Fax (242)563-2446 via the provider portal on 05/03/2018 at 02:29 PM CDT. The following information was submitted in this portal referral request:\n\n\nPatient Information\nPatient Last Name: Bilotta\nPatient First Name: Demetra\nPatient DOB: 06/06/1925\nPatient Gender: F\nPatient Address: 4204 GARDEDALE SUITE 105\nPatient City: CALAIS\nPatient State: MI\nPatient Zip Code: 88623-7806\nPatient Ref Method: Online - Provider Portal\nPatient Phone Number: (980)219-5190\nInsurance Name: Horizon BCBS NJ - BLUE CARD MEMBERS\nSubscriber Id: P7A51VPRLO\nCare Giver Name : \nCare Giver Phone : \nReferral Known Allergies : \nReferral Relation To Patient : \nReferral Insurance Phone Number : \nReferral Group Number : \nReferral Employer : \nReferral Patient Referral Method : Online - Provider Portal\nReferral Payer Auth Number : \nReferral Payer Auth Start Date : \nReferral Payer Auth End Date : \nReferral Medical Group : \nReferral Home Plan : \nReferral Home Plan Phone No : \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \n\n\nFacility Information\nFacility Legal Name: \nFacility Address: \nZip Code: \nCity: \nState: \nFacility Admit Date: \nFacility Discharge Date: \nFacility DBA Name: \n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nReferral Source Information\nReferral Source: Patient's Primary Care Physician\nReferral Contact First Name: \nReferral Contact Last Name: \nReferral Phone: \nReferral Fax: \nNotes: \n\n\n\nHCPC A7034/SERVICE CODE 2516/CPAP MASK - 1/ PUR, FROM 03/14/2018 TO 04/12/2018\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\n\n\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\nWas the service or item for which you are now requesting authorization initiated prior to submitting this request for authorization?: Yes\nWas the service or item for which you are now requesting authorization completed prior to submitting this request for authorization?: No\nIs there a physician's order for the service you are requesting?: No\n\n\n\n\nHCPC A4232/SERVICE CODE 8013/SYRINGE WITH NEEDLE FOR EXTINSULIN PUMP, STERILE, 3CC - PUR,NU-KX FROM 03/10/2018 TO 05/10/2018\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\n\n\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\nWas the service or item for which you are now requesting authorization initiated prior to submitting this request for authorization?: No\nWas the service or item for which you are now requesting authorization completed prior to submitting this request for authorization?: Yes\nIs there a physician's order for the service you are requesting?: Yes\n\n\n\n\nHCPC E0730/SERVICE CODE 2218/TENS, FOUR LEAD, LARGER AREA/MULTIPLE NERVE STIMULATION - 1/ PUR,NU FROM 11/19/2017 TO 12/18/2017\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\n\n\n\n\n\nPhysician Information\n\nOrdering Physician\nPhysician Last Name: Bono\nPhysician First Name: Alfonso\nAddress: 950 BAKER ST  STE # 2 \nCity: PARKER\nState: SC\nZip: 47798-4511\nPhone: (511)959-7302\nFax: (633)350-5373\n\n\nPrimary Care Physician\nPhysician Last Name: \nPhysician First Name: \nAddress: \nCity: \nState: \nZip: \nPhone: \nFax: \n\n\nDiagnosis Information\nPrimary Diagnosis: X831XXA\nOther Diagnosis: \nOther Diagnosis: \nOther Diagnosis: \nDiag Procedure Name: \nDiag Procedure Date: \n\n\nServicing Provider\nProvider Name: DOCTORS CHOICE HOME HEALTH\nProvider Address: 1362 NORTH MCDOWELL BOULEVARD SUITE 2C\nProvider City: TINTON FALLS\nProvider State: NM\nProvider Zip: 12817-0834\n\nProvider Override Rate: \n\n\nWas the service or item for which you are now requesting authorization initiated prior to submitting this request for authorization?: No\nWas the service or item for which you are now requesting authorization completed prior to submitting this request for authorization?: No\nIs there a physician's order for the service you are requesting?: Yes\n\n\n\n\n\n\n\n\nTHE ABOVE PROVIDER PORTAL REQUEST IS BEING PROCESSED TO DETERMINE NEXT STEPS \n\n05/03/2018 02:29 PM CDT\n\n\n\nHCPC A7034/SERVICE CODE 2516/CPAP MASK - 1/ PUR, FROM 03/14/2018 TO 04/12/2018\nTHE ABOVE PROVIDER PORTAL REFERRAL REQUEST WAS ROUTED TO THE HIT QUEUE WITH A ROUTE REASON OF Portal - Clin Rev BECAUSE OF THE FOLLOWING RULE FAILURES: \n\nCLINICAL REVIEW REQUIRED: CARECENTRIX IS DELEGATED FOR UM BY THE HEALTH PLAN FOR THIS SERVICE AND THIS SERVICE REQUIRES A MEDICAL NECESSITY REVIEW.  IF NOT MEDICALLY NECESSARY, SEND FOR PHYSICIAN REVIEW.\n\n\n\n\n\n\n\nHCPC A4232/SERVICE CODE 8013/SYRINGE WITH NEEDLE FOR EXTINSULIN PUMP, STERILE, 3CC - PUR,NU-KX FROM 03/10/2018 TO 05/10/2018\n\n\n\n\n\n\n\nHCPC E0730/SERVICE CODE 2218/TENS, FOUR LEAD, LARGER AREA/MULTIPLE NERVE STIMULATION - 1/ PUR,NU FROM 11/19/2017 TO 12/18/2017\nTHE ABOVE PROVIDER PORTAL REFERRAL REQUEST WAS ROUTED TO THE HIT QUEUE WITH A ROUTE REASON OF Portal - Clin Rev BECAUSE OF THE FOLLOWING RULE FAILURES: \n\nCLINICAL REVIEW REQUIRED: CARECENTRIX IS DELEGATED FOR UM BY THE HEALTH PLAN FOR THIS SERVICE AND THIS SERVICE REQUIRES A MEDICAL NECESSITY REVIEW.  IF NOT MEDICALLY NECESSARY, SEND FOR PHYSICIAN REVIEW.\n\n\n\n\n\n\n\n\n\nIntake ID: 7828102\nPrioritized By: \nPrioritization Type: \nPrioritization Reason: \nEmail Distribution: ",
                 "operation_center_code": "HARTFORD",
                 "date": "2018-08-03 10:05:10",
                 "next_review_date": "2019-05-04 02:29:14",
