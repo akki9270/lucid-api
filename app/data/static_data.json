@@ -245,6 +245,12 @@
                 "tag_color": "#009999"
             },
             {
+                "tag_code": "5e55f127fc13ae5b6100000064",
+                "tag_name": "Patient Expression",
+                "associate_tag": "Negligent",
+                "tag_color": "#009999"
+            },
+            {
                 "tag_code": "5e55f127fc13ae5b6100000039",
                 "tag_name": "Patient Expression",
                 "associate_tag": "Upset",
@@ -276,43 +282,73 @@
             },
             {
                 "tag_code": "5e55f127fc13ae5b6100000044",
-                "tag_name": "Social Media",
+                "tag_name": "Staffing",
                 "associate_tag": "Hard to Staff",
                 "tag_color": "#666600"
             },
             {
                 "tag_code": "5e55f127fc13ae5b6100000045",
-                "tag_name": "Social Media",
+                "tag_name": "Staffing",
                 "associate_tag": "Letter of Agreement",
                 "tag_color": "#666600"
             },
             {
                 "tag_code": "5e55f127fc13ae5b6100000046",
-                "tag_name": "Social Media",
+                "tag_name": "Staffing",
                 "associate_tag": "LOA",
                 "tag_color": "#666600"
             },
             {
                 "tag_code": "5e55f127fc13ae5b6100000047",
-                "tag_name": "Social Media",
+                "tag_name": "Staffing",
                 "associate_tag": "Rate Approval",
                 "tag_color": "#666600"
             },
             {
                 "tag_code": "5e55f127fc13ae5b6100000048",
-                "tag_name": "Social Media",
+                "tag_name": "Staffing",
                 "associate_tag": "Scrub Note",
                 "tag_color": "#666600"
             },
             {
                 "tag_code": "5e55f127fc13ae5b6100000049",
-                "tag_name": "Social Media",
+                "tag_name": "Staffing",
                 "associate_tag": "Staffing Note",
                 "tag_color": "#666600"
             },
             {
+                "tag_code": "5e55f127fc13ae5b6100000071",
+                "tag_name": "Staffing",
+                "associate_tag": "Flood",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000072",
+                "tag_name": "Staffing",
+                "associate_tag": "Fire",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000073",
+                "tag_name": "Staffing",
+                "associate_tag": "Hurricane",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000074",
+                "tag_name": "Staffing",
+                "associate_tag": "Snow",
+                "tag_color": "#666600"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000075",
+                "tag_name": "Staffing",
+                "associate_tag": "Blizzard",
+                "tag_color": "#666600"
+            },
+            {
                 "tag_code": "5e55f127fc13ae5b6100000050",
-                "tag_name": "Social Media",
+                "tag_name": "Staffing",
                 "associate_tag": "HTS",
                 "tag_color": "#666600"
             },
@@ -393,6 +429,42 @@
                 "tag_name": "Network",
                 "associate_tag": "Turn Back",
                 "tag_color": "#006bb3"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000065",
+                "tag_name": "Social Media",
+                "associate_tag": "Instagram",
+                "tag_color": "#336666"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000066",
+                "tag_name": "Social Media",
+                "associate_tag": "Facebook",
+                "tag_color": "#336666"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000067",
+                "tag_name": "Social Media",
+                "associate_tag": "Google",
+                "tag_color": "#336666"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000068",
+                "tag_name": "Social Media",
+                "associate_tag": "News",
+                "tag_color": "#336666"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000069",
+                "tag_name": "Social Media",
+                "associate_tag": "Twitter",
+                "tag_color": "#336666"
+            },
+            {
+                "tag_code": "5e55f127fc13ae5b6100000070",
+                "tag_name": "Social Media",
+                "associate_tag": "Yelp",
+                "tag_color": "#336666"
             }
         ]
     },
