@@ -61,7 +61,7 @@ async function getPatients(req, res, next) {
         let matchedRows = await models.UserLastseen.findAll({
             where: { user_id: { [Sequelize.Op.eq]: user } },
             limit: 10,
-            order: [['last_seen', 'asc']],
+            order: [['last_seen', 'desc']],
             raw: true
         });
         // console.log('matched ', matchedRows.length);
